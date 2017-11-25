@@ -5,12 +5,23 @@
  * Le 6 décembre 2017
  */
 
-//Git test push
-
+#include <random>
 #include <iostream>
 #include <cstdlib>
 
 enum Colour {RED, YELLOW, GREEN, BLUE, WHITE};
+
+struct RandomDice {
+    //got it to work but i am not sure where to put what as a static
+    static int roll() {
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        static std::uniform_int_distribution<> dis(1,6);
+        int x  = dis(gen);
+        std::cout << "x in random dice" << x << std::endl;
+        return x;
+    }
+};
 
 struct Dice{
     const Colour col;
@@ -21,7 +32,11 @@ struct Dice{
     
     //Roll function implementation
     int roll(){
-        face = rand() % 6 + 1;
+        //face = rand() % 6 + 1;
+        //return face;
+        RandomDice *random = new RandomDice();
+        face = random->roll();
+        std::cout << "face in roll " << face << std::endl;
         return face;
     }
     
@@ -55,10 +70,16 @@ struct Dice{
 
 
 int main() {
-    
     Dice d(Colour::RED, 0);
     d.roll();
-    
+    std::cout << d << std::endl;
+    d.roll();
+    std::cout << d << std::endl;
+    d.roll();
+    std::cout << d << std::endl;
+    d.roll();
+    std::cout << d << std::endl;
+    d.roll();
     std::cout << d << std::endl;
     return 0;
 }

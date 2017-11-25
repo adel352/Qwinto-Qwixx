@@ -10,6 +10,8 @@
 #define RandomDice_h
 #include <random>
 #include <iostream>
+#include <cstdlib>
+#include <vector>
 
 struct RandomDice {
 public:

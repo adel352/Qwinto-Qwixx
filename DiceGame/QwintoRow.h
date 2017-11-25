@@ -8,6 +8,10 @@
 
 #ifndef QwintoRow_h
 #define QwintoRow_h
+#include <random>
+#include <iostream>
+#include <cstdlib>
+#include <vector>
 
 template <Colour colour>
 class QwintoRow {

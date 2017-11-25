@@ -6,9 +6,10 @@
 //  Copyright © 2017 Adel Araji. All rights reserved.
 //
 
-#include <stdio.h>
 #include <random>
 #include <iostream>
+#include <cstdlib>
+#include <vector>
 #include "RandomDice.h"
 
 int RandomDice::roll() {

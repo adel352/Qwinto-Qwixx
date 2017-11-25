@@ -10,20 +10,6 @@
 #include <cstdlib>
 #include <vector>
 
-enum Colour {RED, YELLOW, GREEN, BLUE, WHITE};
-
-struct RandomDice {
-    //got it to work but i am not sure where to put what as a static
-    static int roll() {
-        static std::random_device rd;
-        static std::mt19937 gen(rd());
-        static std::uniform_int_distribution<> dis(1,6);
-        int x  = dis(gen);
-        std::cout << "x in random dice" << x << std::endl;
-        return x;
-    }
-};
-
 struct Dice{
     const Colour col;
     int face;

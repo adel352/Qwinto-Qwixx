@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48E63CF51FB9349E00E759DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E63CF41FB9349E00E759DB /* main.cpp */; };
+		AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEC71FC9D4E500D91C90 /* QwintoRow.cpp */; };
+		AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CECD1FC9D58400D91C90 /* RandomDice.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,11 @@
 /* Begin PBXFileReference section */
 		48E63CF11FB9349E00E759DB /* DiceGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DiceGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E63CF41FB9349E00E759DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AC69CEC61FC9D4E500D91C90 /* QwintoRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QwintoRow.h; sourceTree = "<group>"; };
+		AC69CEC71FC9D4E500D91C90 /* QwintoRow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoRow.cpp; sourceTree = "<group>"; };
+		AC69CEC91FC9D50F00D91C90 /* Colour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colour.h; sourceTree = "<group>"; };
+		AC69CECD1FC9D58400D91C90 /* RandomDice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RandomDice.cpp; sourceTree = "<group>"; };
+		AC69CECF1FC9D5BD00D91C90 /* RandomDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomDice.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +64,12 @@
 		48E63CF31FB9349E00E759DB /* DiceGame */ = {
 			isa = PBXGroup;
 			children = (
+				AC69CEC71FC9D4E500D91C90 /* QwintoRow.cpp */,
+				AC69CEC61FC9D4E500D91C90 /* QwintoRow.h */,
 				48E63CF41FB9349E00E759DB /* main.cpp */,
+				AC69CEC91FC9D50F00D91C90 /* Colour.h */,
+				AC69CECD1FC9D58400D91C90 /* RandomDice.cpp */,
+				AC69CECF1FC9D5BD00D91C90 /* RandomDice.h */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";
@@ -119,7 +131,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */,
 				48E63CF51FB9349E00E759DB /* main.cpp in Sources */,
+				AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

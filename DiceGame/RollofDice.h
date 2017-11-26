@@ -8,6 +8,7 @@
 
 #ifndef RollofDice_h
 #define RollofDice_h
+#include "Dice.h"
 
 struct RollOfDice {
 private:

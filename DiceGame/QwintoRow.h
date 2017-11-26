@@ -12,18 +12,19 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include "Colour.h"
+#include "RollofDice.h"
 
 template <Colour colour>
 class QwintoRow {
-private: //Would this be private i am not sure
-    int row[12];
-    int operator[] (int position) {
-        return row[position];
-    }
-public:
-    bool validate (RollofDice rollOfDice, int position);
-    friend std::ostream& operator<<(std::ostream& os, const QwintoRow& qwintoRow);
+    private:
+        int qwintoRow[12];
+        int operator[] (int position) {
+            return qwintoRow[position];
+        }
+    public:
+        bool validate (RollOfDice rollOfDice, int position);
+        friend std::ostream& operator<<(std::ostream& os, const QwintoRow& qwintoRow);
 };
-
 
 #endif /* QwintoRow_h */

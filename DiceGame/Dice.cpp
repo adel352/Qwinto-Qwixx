@@ -29,7 +29,8 @@ int Dice::getFace(){
     return face;
 }
 
-friend std::ostream &operator<<(std::ostream& os, const Dice &dc)
+//https://stackoverflow.com/questions/35904143/friend-not-allowed-outside-of-a-class-definition
+std::ostream &operator<<(std::ostream& os, const Dice &dc)
 {
     os<< "Dice with colour: ";
     

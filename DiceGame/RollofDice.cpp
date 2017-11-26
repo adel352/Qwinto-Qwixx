@@ -45,7 +45,8 @@ RollOfDice::operator int() const {
     return sum;
 }
 
-friend std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
+//https://stackoverflow.com/questions/35904143/friend-not-allowed-outside-of-a-class-definition
+std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
 {
     //Print all dices stored in the container
     for (Dice d: dc.containerOfDice){

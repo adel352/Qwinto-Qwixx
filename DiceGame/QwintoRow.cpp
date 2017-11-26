@@ -18,7 +18,7 @@ template<>
 bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     //might have to make a flag
     if (position > 0 && position < 13) {
-        
+        if 
     } else {
         return false;
     }

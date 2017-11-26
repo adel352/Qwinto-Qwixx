@@ -12,18 +12,19 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <array>
 #include "Colour.h"
 #include "RollofDice.h"
 
 template <Colour colour>
 class QwintoRow {
     private:
-        int qwintoRow[12];
-        int operator[] (int position) {
+        std::array<int,12> qwintoRow;
+        int operator[] (int position) const{
             return qwintoRow[position];
         }
     public:
-        bool validate (RollOfDice rollOfDice, int position);
+    bool validate (RollOfDice rollOfDice, int position);
         friend std::ostream& operator<<(std::ostream& os, const QwintoRow& qwintoRow);
 };
 

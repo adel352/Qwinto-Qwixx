@@ -19,13 +19,16 @@
 template <Colour colour>
 class QwintoRow {
     private:
-        std::array<int,12> qwintoRow;
-        int operator[] (int position) const{
-            return qwintoRow[position];
-        }
+    //Array filled with 0 values in the beginning
+    std::array<int,10> arrayRow = {0};
+    
     public:
+    inline int& operator[] (const int position){
+        return arrayRow[position];
+    }
+
     bool validate (RollOfDice rollOfDice, int position);
-        friend std::ostream& operator<<(std::ostream& os, const QwintoRow& qwintoRow);
+    friend std::ostream& operator<<(std::ostream& os, const QwintoRow<colour> arrayRow);
 };
 
 #endif /* QwintoRow_h */

@@ -17,6 +17,6 @@ int RandomDice::roll() {
     static std::mt19937 gen(rd());
     static std::uniform_int_distribution<> dis(1,6);
     int x  = dis(gen);
-    std::cout << "x in random dice" << x << std::endl;
+    //std::cout << "x in random dice" << x << std::endl;
     return x;
 }

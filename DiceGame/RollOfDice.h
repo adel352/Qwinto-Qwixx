@@ -12,8 +12,9 @@
 
 struct RollOfDice {
 private:
-    std::vector<Dice> containerOfDice;
+//    std::vector<Dice> containerOfDice;
 public:
+    std::vector<Dice> containerOfDice;
     void roll();
     
     // Takes the colours of 2 dice and returns a RollOFDice containing them

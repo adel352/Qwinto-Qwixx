@@ -22,7 +22,10 @@ private:
     int face;
 
 public:
-    //Constructor
+    //Default Constructor
+    Dice() = default;
+    
+    //Constructor with 2 parameters
     Dice(Colour c, int f);
     
     //Roll function implementation

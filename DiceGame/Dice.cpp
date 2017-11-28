@@ -17,7 +17,6 @@ Dice::Dice(Colour c, int f): col(c), face(f) {};
 int Dice::roll(){
     RandomDice *random = new RandomDice();
     face = random->roll();
-    std::cout << "face in roll " << face << std::endl;
     return face;
 }
 

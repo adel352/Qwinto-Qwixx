@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include <vector>
 #include "Dice.h"
-#include "RollofDice.h"
+#include "RollOfDice.h"
 
 void RollOfDice::roll() {
     for (Dice d: containerOfDice){
@@ -50,7 +50,7 @@ std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
 {
     //Print all dices stored in the container
     for (Dice d: dc.containerOfDice){
-        os << d;
+        os << d << "\n";
     }
     
     return os;

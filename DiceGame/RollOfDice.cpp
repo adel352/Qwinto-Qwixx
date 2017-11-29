@@ -55,3 +55,15 @@ std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
     
     return os;
 }
+
+int RollOfDice::getNumberOfDice()
+{
+    return containerOfDice.size();
+}
+
+
+std::vector<Dice> RollOfDice::getContainer()
+{
+    return containerOfDice;
+}
+

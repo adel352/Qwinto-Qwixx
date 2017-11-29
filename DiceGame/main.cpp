@@ -14,6 +14,7 @@
 #include "RandomDice.h"
 #include "RollOfDice.h"
 #include "QwintoRow.h"
+#include "QwixxRow.h"
 
 int main() {
     /*
@@ -74,6 +75,47 @@ int main() {
     blueRow[7] = 14;
     
     std::cout << blueRow << std::endl;
+    
+    
+    //QwixxRow TEST
+    
+    QwixxRow<std::vector<int>,RED> redQuixxRow;
+    QwixxRow<std::vector<int>,GREEN> greenQuixxRow;
+    
+    //Have a rollOdice with white and red
+    
+    Dice redDice(Colour::RED, 5);
+    Dice greenDice(Colour::GREEN, 6);
+    Dice whiteDice(Colour::WHITE, 6);
+    
+    RollOfDice yoo;
+    yoo.containerOfDice.push_back(redDice);
+    yoo.containerOfDice.push_back(whiteDice);
+    
+    RollOfDice greenYo;
+    greenYo.containerOfDice.push_back(greenDice);
+    greenYo.containerOfDice.push_back(whiteDice);
+    
+    std::cout << yoo.getNumberOfDice() << std::endl;
+    
+    try {
+        redQuixxRow += yoo;
+    } catch (const char* msg) {
+        std::cerr << msg << std::endl;
+    }
+    
+    
+    std::cout << redQuixxRow << std::endl;
+    
+    try {
+        greenQuixxRow += greenYo;
+    } catch (const char* msg) {
+        std::cerr << msg << std::endl;
+    }
+    std::cout << greenQuixxRow << std::endl;
+    
+    
+    
     
     return 0;
 }

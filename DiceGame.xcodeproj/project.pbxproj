@@ -16,6 +16,7 @@
 		AC69CED41FC9DF2400D91C90 /* RollOfDice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CED31FC9DF2400D91C90 /* RollOfDice.cpp */; };
 		AC69CEF41FCEEE1200D91C90 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEF31FCEEE1200D91C90 /* Player.cpp */; };
 		AC69CEF71FCEF36400D91C90 /* QwintoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */; };
+		AC69CEFA1FCEF50D00D91C90 /* QwixxPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEF91FCEF50D00D91C90 /* QwixxPlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,8 @@
 		AC69CEF31FCEEE1200D91C90 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		AC69CEF51FCEF14500D91C90 /* QwintoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoPlayer.h; sourceTree = "<group>"; };
 		AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoPlayer.cpp; sourceTree = "<group>"; };
+		AC69CEF81FCEF4CD00D91C90 /* QwixxPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxPlayer.h; sourceTree = "<group>"; };
+		AC69CEF91FCEF50D00D91C90 /* QwixxPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwixxPlayer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				AC69CEF31FCEEE1200D91C90 /* Player.cpp */,
 				AC69CEF51FCEF14500D91C90 /* QwintoPlayer.h */,
 				AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */,
+				AC69CEF81FCEF4CD00D91C90 /* QwixxPlayer.h */,
+				AC69CEF91FCEF50D00D91C90 /* QwixxPlayer.cpp */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				AC69CEF71FCEF36400D91C90 /* QwintoPlayer.cpp in Sources */,
 				AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */,
 				48E63CF51FB9349E00E759DB /* main.cpp in Sources */,
+				AC69CEFA1FCEF50D00D91C90 /* QwixxPlayer.cpp in Sources */,
 				AC69CED11FC9DA8F00D91C90 /* Dice.cpp in Sources */,
 				AC69CED41FC9DF2400D91C90 /* RollOfDice.cpp in Sources */,
 				AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */,

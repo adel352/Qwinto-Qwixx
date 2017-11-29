@@ -29,7 +29,7 @@ int main() {
     std::cout << d << std::endl;
     d.roll();
     std::cout << d << std::endl;
-     */
+    
     
     Dice d1(Colour::RED, 3);
     d1.roll();
@@ -113,6 +113,23 @@ int main() {
         std::cerr << msg << std::endl;
     }
     std::cout << greenQuixxRow << std::endl;
+    */
+    
+    std::string inputVersion;
+    int inputNumberPlayers;
+    std::string inputPlayerName;
+    
+    std::cout << "********** Bienvenue au jeux de dés Qwinto-Qwixx **********" << std::endl;
+    std::cout << std::endl;
+    std::cout << "Le jeux a deux versions, Qwinto et Qwixx. Entrer Qwinto ou Qwixx pour la version désiré:" << std::endl;
+    std::cin >> inputVersion;
+    std::cout << std::endl;
+    std::transform(inputVersion.begin(), inputVersion.end(), inputVersion.begin(), ::tolower);
+    std::cout << "Entre le nombre de joueurs qui veulent participer. Entrer une valeur numérique." << std::endl;
+    std::cin >> inputNumberPlayers;
+    std::cout << std::endl;
+    
+    
     
     
     

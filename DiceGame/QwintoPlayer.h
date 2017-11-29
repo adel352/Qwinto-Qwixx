@@ -1,0 +1,23 @@
+//
+//  QwintoPlayer.h
+//  DiceGame
+//
+//  Created by Alexandre Prud'Homme on 2017-11-29.
+//  Copyright © 2017 Adel Araji. All rights reserved.
+//
+
+#ifndef QwintoPlayer_h
+#define QwintoPlayer_h
+#include "Player.h"
+//#include "QwintoScoreSheet.h"
+#include "RollOfDice.h"
+
+class QwintoPlayer : Player {
+private:
+    //QwintoScoreSheet qwintoScoreSheet;
+public:
+    void inputBeforeRoll(RollOfDice rollOfDice);
+    void inputAfterRoll(RollOfDice rollOfDice);
+};
+
+#endif /* QwintoPlayer_h */

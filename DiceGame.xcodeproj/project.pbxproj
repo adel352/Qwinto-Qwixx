@@ -15,6 +15,7 @@
 		AC69CED11FC9DA8F00D91C90 /* Dice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CED01FC9DA8F00D91C90 /* Dice.cpp */; };
 		AC69CED41FC9DF2400D91C90 /* RollOfDice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CED31FC9DF2400D91C90 /* RollOfDice.cpp */; };
 		AC69CEF41FCEEE1200D91C90 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEF31FCEEE1200D91C90 /* Player.cpp */; };
+		AC69CEF71FCEF36400D91C90 /* QwintoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,8 @@
 		AC69CED51FC9E20900D91C90 /* RollOfDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RollOfDice.h; sourceTree = "<group>"; };
 		AC69CEF21FCEEBB200D91C90 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		AC69CEF31FCEEE1200D91C90 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		AC69CEF51FCEF14500D91C90 /* QwintoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoPlayer.h; sourceTree = "<group>"; };
+		AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoPlayer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				48E63CF41FB9349E00E759DB /* main.cpp */,
 				AC69CEF21FCEEBB200D91C90 /* Player.h */,
 				AC69CEF31FCEEE1200D91C90 /* Player.cpp */,
+				AC69CEF51FCEF14500D91C90 /* QwintoPlayer.h */,
+				AC69CEF61FCEF36400D91C90 /* QwintoPlayer.cpp */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				AC69CEF41FCEEE1200D91C90 /* Player.cpp in Sources */,
 				48E283161FCCEEA000D84E49 /* QwixxRow.cpp in Sources */,
 				48E283131FCCB21300D84E49 /* ScoreSheet.cpp in Sources */,
+				AC69CEF71FCEF36400D91C90 /* QwintoPlayer.cpp in Sources */,
 				AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */,
 				48E63CF51FB9349E00E759DB /* main.cpp in Sources */,
 				AC69CED11FC9DA8F00D91C90 /* Dice.cpp in Sources */,

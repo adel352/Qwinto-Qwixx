@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <array>
 #include "Colour.h"
 #include "Dice.h"
 #include "RandomDice.h"
@@ -118,6 +119,7 @@ int main() {
     std::string inputVersion;
     int inputNumberPlayers;
     std::string inputPlayerName;
+    std::vector<std::string> vectorNomJoueur;
     
     std::cout << "********** Bienvenue au jeux de dés Qwinto-Qwixx **********" << std::endl;
     std::cout << std::endl;
@@ -125,9 +127,15 @@ int main() {
     std::cin >> inputVersion;
     std::cout << std::endl;
     std::transform(inputVersion.begin(), inputVersion.end(), inputVersion.begin(), ::tolower);
-    std::cout << "Entre le nombre de joueurs qui veulent participer. Entrer une valeur numérique." << std::endl;
+    std::cout << "Entrer le nombre de joueurs qui veulent participer. Entrer une valeur numérique." << std::endl;
     std::cin >> inputNumberPlayers;
     std::cout << std::endl;
+    for (int i = 0; i < inputNumberPlayers; i++) {
+        std::cout << "Entrer le nom du joueur " << i << std::endl;
+        std::cin >> inputPlayerName;
+        vectorNomJoueur.push_back(inputPlayerName);
+    }
+    
     
     
     

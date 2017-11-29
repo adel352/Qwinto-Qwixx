@@ -18,9 +18,17 @@ class ScoreSheet {
     int overallScore;
     
 public:
-    bool score(RollOfDice rd,  Colour cl, int positionFromLeft = -1);
-    int setTotal();
+    ScoreSheet();
+    ~ScoreSheet();
     
+    bool score(RollOfDice rd,  Colour cl, int positionFromLeft);
+    int setTotal();
+    virtual int calcTotal() = 0;
+    
+    virtual bool const operator !();
+    //Note that we can't overload the insertion operator since this is an abstract class, it will be implemented in the children classes
+protected:
+    virtual bool validate(RollOfDice rd,  Colour cl, int positionFromLeft) = 0;//Pure virtual function to b implemented in children classes
 };
 
 #endif /* ScoreSheet_h */

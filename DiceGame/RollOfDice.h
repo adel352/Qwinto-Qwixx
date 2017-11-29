@@ -25,6 +25,12 @@ public:
     
     //Overloading insertion operator
     friend std::ostream &operator<<(std::ostream& os, const RollOfDice &dc);
+    
+    //Getting the size of the container
+    int getNumberOfDice();
+    
+    //Getting the vector back
+    std::vector<Dice> getContainer();
 };
 
 #endif /* RollofDice_h */

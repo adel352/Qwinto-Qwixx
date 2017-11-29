@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiceGame/QwixxRow.cpp"
+            timestampString = "533598032.218703"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getRowString()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)2&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.10102"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "978">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)3&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.103985"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "978">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiceGame/QwixxRow.cpp"
+            timestampString = "533598032.219216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "getRowString()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)2&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.111268"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)3&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.11396"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiceGame/QwixxRow.cpp"
+            timestampString = "533598032.219566"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getRowString()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)2&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.123203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1152">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QwixxRow&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, (Colour)3&gt;::getRowString()"
+                  moduleName = "DiceGame"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adel_araji/Dropbox/UOttawa/10-Fall%202017/CSI%202772-C++/Projet/DiceGame/DiceGame/QwixxRow.cpp"
+                  timestampString = "533597776.126014"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

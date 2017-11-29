@@ -87,9 +87,9 @@
 				AC69CEC71FC9D4E500D91C90 /* QwintoRow.cpp */,
 				48E283141FCCEE9100D84E49 /* QwixxRow.h */,
 				48E283151FCCEEA000D84E49 /* QwixxRow.cpp */,
-				48E63CF41FB9349E00E759DB /* main.cpp */,
 				48E283111FCCB20700D84E49 /* ScoreSheet.h */,
 				48E283121FCCB21300D84E49 /* ScoreSheet.cpp */,
+				48E63CF41FB9349E00E759DB /* main.cpp */,
 			);
 			path = DiceGame;
 			sourceTree = "<group>";

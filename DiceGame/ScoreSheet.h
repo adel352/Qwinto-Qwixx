@@ -18,8 +18,13 @@ class ScoreSheet {
     int overallScore;
     
 public:
-    ScoreSheet();
+    
+    ScoreSheet()=default;
+    ScoreSheet(std::string name);
     ~ScoreSheet();
+    int getNumberOfFailedAttempts();
+    void setFinalScore(int score);
+    std::string getPlayerName();
     
     bool score(RollOfDice rd,  Colour cl, int positionFromLeft);
     int setTotal();

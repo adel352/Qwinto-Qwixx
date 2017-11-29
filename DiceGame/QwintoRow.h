@@ -14,7 +14,7 @@
 #include <vector>
 #include <array>
 #include "Colour.h"
-#include "RollofDice.h"
+#include "RollOfDice.h"
 
 template <Colour colour>
 class QwintoRow {
@@ -29,6 +29,7 @@ class QwintoRow {
 
     bool validate (RollOfDice rollOfDice, int position);
     friend std::ostream& operator<<(std::ostream& os, const QwintoRow<colour> arrayRow);
+    
 };
 
 #endif /* QwintoRow_h */

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48E283131FCCB21300D84E49 /* ScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283121FCCB21300D84E49 /* ScoreSheet.cpp */; };
 		48E283161FCCEEA000D84E49 /* QwixxRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283151FCCEEA000D84E49 /* QwixxRow.cpp */; };
+		48E283191FCE5E7F00D84E49 /* QwintoScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283181FCE5E7F00D84E49 /* QwintoScoreSheet.cpp */; };
 		48E63CF51FB9349E00E759DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E63CF41FB9349E00E759DB /* main.cpp */; };
 		AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CEC71FC9D4E500D91C90 /* QwintoRow.cpp */; };
 		AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC69CECD1FC9D58400D91C90 /* RandomDice.cpp */; };
@@ -33,6 +34,8 @@
 		48E283121FCCB21300D84E49 /* ScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreSheet.cpp; sourceTree = "<group>"; };
 		48E283141FCCEE9100D84E49 /* QwixxRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxRow.h; sourceTree = "<group>"; };
 		48E283151FCCEEA000D84E49 /* QwixxRow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwixxRow.cpp; sourceTree = "<group>"; };
+		48E283171FCE5E6F00D84E49 /* QwintoScoreSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoScoreSheet.h; sourceTree = "<group>"; };
+		48E283181FCE5E7F00D84E49 /* QwintoScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoScoreSheet.cpp; sourceTree = "<group>"; };
 		48E63CF11FB9349E00E759DB /* DiceGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DiceGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E63CF41FB9349E00E759DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AC69CEC61FC9D4E500D91C90 /* QwintoRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QwintoRow.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				48E283151FCCEEA000D84E49 /* QwixxRow.cpp */,
 				48E283111FCCB20700D84E49 /* ScoreSheet.h */,
 				48E283121FCCB21300D84E49 /* ScoreSheet.cpp */,
+				48E283171FCE5E6F00D84E49 /* QwintoScoreSheet.h */,
+				48E283181FCE5E7F00D84E49 /* QwintoScoreSheet.cpp */,
 				48E63CF41FB9349E00E759DB /* main.cpp */,
 			);
 			path = DiceGame;
@@ -155,6 +160,7 @@
 				48E283131FCCB21300D84E49 /* ScoreSheet.cpp in Sources */,
 				AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */,
 				48E63CF51FB9349E00E759DB /* main.cpp in Sources */,
+				48E283191FCE5E7F00D84E49 /* QwintoScoreSheet.cpp in Sources */,
 				AC69CED11FC9DA8F00D91C90 /* Dice.cpp in Sources */,
 				AC69CED41FC9DF2400D91C90 /* RollOfDice.cpp in Sources */,
 				AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */,

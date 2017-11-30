@@ -11,6 +11,10 @@
 //#include "QwintoScoreSheet.h"
 #include "RollOfDice.h"
 
+QwintoPlayer::QwintoPlayer() {
+    actif = false;
+}
+
 void QwintoPlayer::inputBeforeRoll(RollOfDice rollOfDice){
     //will implement once I understand how the main works
 }

@@ -12,10 +12,11 @@
 //#include "QwixxScoreSheet.h"
 #include "RollOfDice.h"
 
-class QwixxPlayer : Player {
+class QwixxPlayer : public Player {
 private:
     //QwixxScoreSheet qwixxtoScoreSheet;
 public:
+    QwixxPlayer();
     void inputBeforeRoll(RollOfDice rollOfDice);
     void inputAfterRoll(RollOfDice rollOfDice);
 };

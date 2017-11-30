@@ -11,6 +11,10 @@
 //#include "QwixxScoreSheet.h"
 #include "RollOfDice.h"
 
+QwixxPlayer::QwixxPlayer() {
+    actif = false;
+}
+
 void QwixxPlayer::inputBeforeRoll(RollOfDice rollOfDice){
     //will implement once I understand how the main works
 }

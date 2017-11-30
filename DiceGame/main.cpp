@@ -16,7 +16,8 @@
 #include "RollOfDice.h"
 #include "QwintoRow.h"
 #include "QwixxRow.h"
-
+#include "QwintoPlayer.h"
+#include "QwixxPlayer.h"
 int main() {
     /*
     Dice d(Colour::RED, 0);
@@ -116,31 +117,76 @@ int main() {
     std::cout << greenQuixxRow << std::endl;
     */
     
+    //Variables d'instance
     std::string inputVersion;
     int inputNumberPlayers;
     std::string inputPlayerName;
     std::vector<std::string> vectorNomJoueur;
     
+    //Titre de bienvenue
     std::cout << "********** Bienvenue au jeux de dés Qwinto-Qwixx **********" << std::endl;
     std::cout << std::endl;
+    
+    //Choisir Qwinto ou Qwixx
     std::cout << "Le jeux a deux versions, Qwinto et Qwixx. Entrer Qwinto ou Qwixx pour la version désiré:" << std::endl;
     std::cin >> inputVersion;
-    std::cout << std::endl;
+    inputVersion.erase(remove_if(inputVersion.begin(), inputVersion.end(), isspace), inputVersion.end());
     std::transform(inputVersion.begin(), inputVersion.end(), inputVersion.begin(), ::tolower);
+    while (!(inputVersion == "qwinto" || inputVersion == "qwixx")) {
+        std::cout << "Entrée non valide. Entrer Qwinto ou Qwixx pour la version désiré:" << std::endl;
+        std::cout << std::endl;
+        std::cin >> inputVersion;
+    }
+    
+    //Choisir le nombre de joueurs
     std::cout << "Entrer le nombre de joueurs qui veulent participer. Entrer une valeur numérique." << std::endl;
     std::cin >> inputNumberPlayers;
-    std::cout << std::endl;
+    //source pour cette section du code https://stackoverflow.com/questions/18728754/checking-input-value-is-an-integer
+    while (std::cin.fail()) {
+        std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        std::cin >> inputNumberPlayers;
+    }
+    
+    //Entrer le noms des joueurs
     for (int i = 0; i < inputNumberPlayers; i++) {
-        std::cout << "Entrer le nom du joueur " << i << std::endl;
+        std::cout << "Entrer le nom du joueur " << i+1 << std::endl;
         std::cin >> inputPlayerName;
         vectorNomJoueur.push_back(inputPlayerName);
     }
     
+    //Créer les joueurs soient qwinto ou qwixx dans un vecteur de pointeurs
+    std::vector<Player*> vecteurPlayer;
+    if (inputVersion == "qwinto"){
+        for (int i = 0; i < inputNumberPlayers; i++) {
+            vecteurPlayer.push_back(new QwintoPlayer);
+        }
+    } else if (inputVersion == "qwixx") {
+        for (int i = 0; i < inputNumberPlayers; i++) {
+            vecteurPlayer.push_back(new QwixxPlayer());
+        }
+    } else {
+        std::cout << "Erreur" << std::endl;
+        return 0;
+    }
     
+    //Créer les roll of dices dans un vectuer de pointeurs
+    std::vector<RollOfDice*> vecteurRollOfDice;
+    for (int i = 0; i < inputNumberPlayers; i++) {
+        vecteurRollOfDice.push_back(new RollOfDice());
+    }
     
+    //Using this for now. Can keep or maybe there is a better way for the while loop. Inc is increment to keep track
+    //of the players
+    bool flag = true;
+    int inc = 0;
     
-    
-    
+    while (flag) {
+        vecteurPlayer[inc]->setActif(true);
+        std::cout << vectorNomJoueur[inc] << " Entrer ..." << std::endl;
+        flag = false;
+    }
     
     return 0;
 }

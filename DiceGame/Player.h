@@ -11,13 +11,13 @@
 #include "RollOfDice.h"
 
 class Player {
-private:
+protected:
     bool actif;
 public:
     bool getActif();
     void setActif(bool statusActif);
-    virtual void inputBeforeRoll(RollOfDice rollOfDice);
-    virtual void inputAfterRoll(RollOfDice rollOfDice);
+    virtual void inputBeforeRoll(RollOfDice rollOfDice) = 0;
+    virtual void inputAfterRoll(RollOfDice rollOfDice) = 0;
 };
 
 #endif /* Player_h */

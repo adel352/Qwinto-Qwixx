@@ -159,13 +159,13 @@ int QwintoScoreSheet::calcTotal(){
 std::ostream& operator<< (std::ostream& os, QwintoScoreSheet qw){
     
     os << "Player name: " << qw.playerName << "          Points: " << qw.calcTotal();
-    os << "---------------------------------------";
+    os << "\n---------------------------------------\n";
     os << qw.redRow;
-    os << "---------------------------------------";
+    os << "\n---------------------------------------\n";
     os << qw.yellowRow;
-    os << "---------------------------------------";
+    os << "\n---------------------------------------\n";
     os << qw.blueRow;
-    os << "---------------------------------------";
+    os << "\n---------------------------------------\n";
     os << "Failed throws: " << qw.failedAttempts;
     
     return os;

@@ -15,6 +15,7 @@
 #include "RollOfDice.h"
 #include "QwintoRow.h"
 #include "QwixxRow.h"
+#include "QwintoScoreSheet.h"
 
 int main() {
     /*
@@ -114,6 +115,9 @@ int main() {
     }
     std::cout << greenQuixxRow << std::endl;
     
+    //Testing QwintoScorsheet
+    QwintoScoreSheet scoreSheet = QwintoScoreSheet("Adel");
+    std::cout << scoreSheet << std::endl;
     
     
     

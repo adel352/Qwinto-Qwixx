@@ -16,10 +16,10 @@
 
 
 class QwintoScoreSheet: public ScoreSheet {
-    
     QwintoRow<RED> redRow;
     QwintoRow<YELLOW> yellowRow;
     QwintoRow<BLUE> blueRow;
+    
     
     int findMax(int a, int b, int c);
     std::string playerName = ScoreSheet::getPlayerName();
@@ -27,6 +27,8 @@ class QwintoScoreSheet: public ScoreSheet {
     
     
 public:
+    
+    
     QwintoScoreSheet(std::string name): ScoreSheet(name) {};
     
     virtual bool validate(RollOfDice rd, Colour cl, int positionFromLeft);

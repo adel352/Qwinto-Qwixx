@@ -22,6 +22,7 @@ public:
     ScoreSheet()=default;
     ScoreSheet(std::string name);
     ~ScoreSheet();
+    
     int getNumberOfFailedAttempts();
     void setFinalScore(int score);
     std::string getPlayerName();

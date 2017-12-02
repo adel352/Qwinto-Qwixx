@@ -191,7 +191,7 @@ std::ostream& operator<<(std::ostream& os, const QwintoRow<YELLOW> row){
 
 //Output operator for Blue Row
 std::ostream& operator<<(std::ostream& os, const QwintoRow<BLUE> row){
-    os << "Blue           ";
+    os << "Blue            ";
     
     for (int i = 0; i < 10; i++){
         switch (i) {

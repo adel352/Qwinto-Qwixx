@@ -10,12 +10,24 @@
 #include "ScoreSheet.h"
 
 
-ScoreSheet::ScoreSheet(){
-    
+ScoreSheet::ScoreSheet(std::string name){
+    nameOfPlayer = name;
 }
 
 ScoreSheet::~ScoreSheet(){
     
+}
+
+int ScoreSheet::getNumberOfFailedAttempts(){
+    return numberOfFailedAttempts;
+}
+
+void ScoreSheet::setFinalScore(int score){
+    overallScore = score;
+}
+
+std::string ScoreSheet::getPlayerName(){
+    return nameOfPlayer;
 }
 
 
@@ -28,8 +40,8 @@ ScoreSheet::~ScoreSheet(){
  @param positionFromLeft : Position From Left, set to -1 in case of Qwixx
  @return boolean to check if it is possible to score or note
  */
-bool ScoreSheet::score(RollOfDice rd, Colour cl, int positionFFromLeft = -1){
-    return validate(rd, cl, positionFFromLeft);
+bool ScoreSheet::score(RollOfDice rd, Colour cl, int positionFromLeft = -1){
+    return validate(rd, cl, positionFromLeft);
 }
 
 
@@ -39,6 +51,7 @@ bool ScoreSheet::score(RollOfDice rd, Colour cl, int positionFFromLeft = -1){
  @return int, the final score score of the game
  */
 int ScoreSheet::setTotal(){
+    overallScore = calcTotal();
     return calcTotal();
 }
 

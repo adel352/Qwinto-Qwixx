@@ -17,8 +17,8 @@ private:
     //QwintoScoreSheet qwintoScoreSheet;
 public:
     QwintoPlayer();
-    void inputBeforeRoll(RollOfDice rollOfDice);
-    void inputAfterRoll(RollOfDice rollOfDice);
+    void inputBeforeRoll(RollOfDice& rollOfDice);
+    void inputAfterRoll(RollOfDice& rollOfDice);
 };
 
 #endif /* QwintoPlayer_h */

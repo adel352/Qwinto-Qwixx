@@ -15,10 +15,10 @@ QwintoPlayer::QwintoPlayer() {
     actif = false;
 }
 
-void QwintoPlayer::inputBeforeRoll(RollOfDice rollOfDice){
+void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
     //will implement once I understand how the main works
 }
 
-void QwintoPlayer::inputAfterRoll(RollOfDice rollOfDice){
+void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
     //will implement once I understand how the main works
 }

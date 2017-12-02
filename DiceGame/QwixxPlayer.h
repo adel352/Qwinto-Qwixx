@@ -17,8 +17,8 @@ private:
     //QwixxScoreSheet qwixxtoScoreSheet;
 public:
     QwixxPlayer();
-    void inputBeforeRoll(RollOfDice rollOfDice);
-    void inputAfterRoll(RollOfDice rollOfDice);
+    void inputBeforeRoll(RollOfDice& rollOfDice);
+    void inputAfterRoll(RollOfDice& rollOfDice);
 };
 
 #endif /* QwixxPlayer_h */

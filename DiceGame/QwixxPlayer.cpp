@@ -15,10 +15,10 @@ QwixxPlayer::QwixxPlayer() {
     actif = false;
 }
 
-void QwixxPlayer::inputBeforeRoll(RollOfDice rollOfDice){
+void QwixxPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
     //will implement once I understand how the main works
 }
 
-void QwixxPlayer::inputAfterRoll(RollOfDice rollOfDice){
+void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
     //will implement once I understand how the main works
 }

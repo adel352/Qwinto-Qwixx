@@ -181,12 +181,12 @@ int main() {
     //of the players
     bool flag = true;
     int inc = 0;
-    
+    /*
     while (flag) {
         vecteurPlayer[inc]->setActif(true);
         std::cout << vectorNomJoueur[inc] << " Entrer ..." << std::endl;
         flag = false;
     }
-    
+    */
     return 0;
 }

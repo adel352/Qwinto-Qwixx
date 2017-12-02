@@ -18,6 +18,7 @@
 #include "QwixxRow.h"
 #include "QwintoPlayer.h"
 #include "QwixxPlayer.h"
+#include "ScoreSheet.h"
 int main() {
     /*
     Dice d(Colour::RED, 0);
@@ -121,7 +122,8 @@ int main() {
     std::string inputVersion;
     int inputNumberPlayers;
     std::string inputPlayerName;
-    std::vector<std::string> vectorNomJoueur;
+    std::vector<Player*> vecteurPlayer;
+    std::vector<ScoreSheet*> vecteurScoreSheet;
     
     //Titre de bienvenue
     std::cout << "********** Bienvenue au jeux de dés Qwinto-Qwixx **********" << std::endl;
@@ -134,8 +136,9 @@ int main() {
     std::transform(inputVersion.begin(), inputVersion.end(), inputVersion.begin(), ::tolower);
     while (!(inputVersion == "qwinto" || inputVersion == "qwixx")) {
         std::cout << "Entrée non valide. Entrer Qwinto ou Qwixx pour la version désiré:" << std::endl;
-        std::cout << std::endl;
         std::cin >> inputVersion;
+        inputVersion.erase(remove_if(inputVersion.begin(), inputVersion.end(), isspace), inputVersion.end());
+        std::transform(inputVersion.begin(), inputVersion.end(), inputVersion.begin(), ::tolower);
     }
     
     //Choisir le nombre de joueurs
@@ -153,11 +156,11 @@ int main() {
     for (int i = 0; i < inputNumberPlayers; i++) {
         std::cout << "Entrer le nom du joueur " << i+1 << std::endl;
         std::cin >> inputPlayerName;
-        vectorNomJoueur.push_back(inputPlayerName);
+        //New QwintoScoreSheet() then add the name to it to initialise the vecteur de scoresheet
+        //vecteurScoreSheet.push_back(new );
     }
     
     //Créer les joueurs soient qwinto ou qwixx dans un vecteur de pointeurs
-    std::vector<Player*> vecteurPlayer;
     if (inputVersion == "qwinto"){
         for (int i = 0; i < inputNumberPlayers; i++) {
             vecteurPlayer.push_back(new QwintoPlayer);

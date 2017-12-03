@@ -227,7 +227,25 @@ int main() {
         i = (i+1) % inputNumberPlayers;
         //if (number fails == number fails) {flag = false;}
     }
+    int sum = 0;
+    std::string winner = "";
     
+    for (int j = 0; j < inputNumberPlayers; i++) {
+        auto &s = vecteurScoreSheet[j];
+        if (inputVersion == "qwinto") {
+            //dynamic_cast<QwintoScoreSheet*>(s)->calcTotal();
+            //dynamic_cast<QwintoScoreSheet*>(s)->      print
+            //cast get total, if total > sum, sum = total, winner = getname
+        } else {
+            //dynamic_cast<QwixxScoreSheet*>(s)->calcTotal();
+            //dynamic_cast<QwixxScoreSheet*>(s)->       print
+            //cast get total, if total > sum, sum = total, winner = getname
+        }
+    }
+    std::cout << "Bravo " << winner << " tu as gagné!" << std::endl;
+    std::cout << "********** Fin du jeux de dés Qwinto-Qwixx **********" << std::endl;
+    
+
     //***** Me testing shit ******
     RollOfDice* r = new RollOfDice();
     for (auto &i : vecteurPlayer) {

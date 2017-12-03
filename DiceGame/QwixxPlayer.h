@@ -8,6 +8,9 @@
 
 #ifndef QwixxPlayer_h
 #define QwixxPlayer_h
+#include <iostream>
+#include <string>
+#include <sstream>
 #include "Player.h"
 //#include "QwixxScoreSheet.h"
 #include "RollOfDice.h"

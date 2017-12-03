@@ -8,6 +8,9 @@
 
 #ifndef QwintoPlayer_h
 #define QwintoPlayer_h
+#include <iostream>
+#include <string>
+#include <sstream>
 #include "Player.h"
 //#include "QwintoScoreSheet.h"
 #include "RollOfDice.h"

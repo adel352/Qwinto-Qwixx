@@ -10,6 +10,8 @@
 #include <cstdlib>
 #include <vector>
 #include <array>
+#include <string>
+#include <sstream>
 #include "Colour.h"
 #include "Dice.h"
 #include "RandomDice.h"
@@ -142,10 +144,18 @@ int main() {
     }
     
     //Choisir le nombre de joueurs
-    std::cout << "Entrer le nombre de joueurs qui veulent participer. Entrer une valeur numérique." << std::endl;
+    std::cout << "Entrer le nombre de joueurs qui veulent participer. Entrer une valeur numérique 1, 2 ou 3." << std::endl;
     std::cin >> inputNumberPlayers;
     //source pour cette section du code https://stackoverflow.com/questions/18728754/checking-input-value-is-an-integer
+    /*
     while (std::cin.fail()) {
+        std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        std::cin >> inputNumberPlayers;
+    }
+    */
+    while (inputNumberPlayers != 1 && inputNumberPlayers != 2 && inputNumberPlayers != 3) {
         std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique" << std::endl;
         std::cin.clear();
         std::cin.ignore(256,'\n');
@@ -183,13 +193,46 @@ int main() {
     //Using this for now. Can keep or maybe there is a better way for the while loop. Inc is increment to keep track
     //of the players
     bool flag = true;
-    int inc = 0;
-    /*
+    int i = 0;
+    
     while (flag) {
-        vecteurPlayer[inc]->setActif(true);
-        std::cout << vectorNomJoueur[inc] << " Entrer ..." << std::endl;
+        //for loop number of players? could just control with mod
+        vecteurPlayer[i]->setActif(true);
         flag = false;
+        auto &p = vecteurPlayer[i];
+        auto &s = vecteurScoreSheet[i];
+        if (inputVersion == "qwinto") {
+            dynamic_cast<QwintoPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
+            //roll the dice
+            //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
+            dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+        } else {
+            dynamic_cast<QwixxPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
+            //roll the dice
+            //dynamic_cast<QwixxScoreSheet*>(s)->   print
+            dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+        }
+        for (int j = 0; j < inputNumberPlayers; j++) {
+            if (vecteurPlayer[j]->getActif() == false) {
+                if (inputVersion == "qwinto") {
+                    //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
+                    dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                } else {
+                    //dynamic_cast<QwixxScoreSheet*>(s)->   print
+                    dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                }
+            }
+        }
+        vecteurPlayer[i]->setActif(false);
+        i = (i+1) % inputNumberPlayers;
+        //if (number fails == number fails) {flag = false;}
     }
-    */
+    
+    //***** Me testing shit ******
+    RollOfDice* r = new RollOfDice();
+    for (auto &i : vecteurPlayer) {
+        dynamic_cast<QwintoPlayer*>(i)->inputBeforeRoll(*r);
+    }
+    
     return 0;
 }

@@ -7,7 +7,11 @@
 //
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+#include <sstream>
 #include "Player.h"
+
 
 bool Player::getActif() {
     return actif;

@@ -147,15 +147,9 @@ int main() {
     //Choisir le nombre de joueurs
     std::cout << "Entrer le nombre de joueurs qui veulent participer. Entrer une valeur numérique 1, 2 ou 3." << std::endl;
     std::cin >> inputNumberPlayers;
+    
+    //Choisir le nombre de joueurs
     //source pour cette section du code https://stackoverflow.com/questions/18728754/checking-input-value-is-an-integer
-    /*
-    while (std::cin.fail()) {
-        std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique" << std::endl;
-        std::cin.clear();
-        std::cin.ignore(256,'\n');
-        std::cin >> inputNumberPlayers;
-    }
-    */
     while (inputNumberPlayers != 1 && inputNumberPlayers != 2 && inputNumberPlayers != 3) {
         std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique" << std::endl;
         std::cin.clear();
@@ -197,16 +191,23 @@ int main() {
     bool flag = true;
     int i = 0;
     std::cout << "did i get here2" << std::endl;
+    
+    //While qui roule le jeux
     while (flag) {
         flag = false;
+        
         auto &s = vecteurScoreSheet[i];
         std::cout << "did i get here3" << std::endl;
+        
+        //Set un joueur comme actif
         if (inputVersion == "qwinto") {
             vecteurQwintoPlayer[i]->setActif(true);
             std::cout << "did i get here4" << std::endl;
         } else {
             vecteurQwixxPlayer[i]->setActif(true);
         }
+        
+        //Joueur actif joue
         std::cout << "did i get here5" << std::endl;
         if (inputVersion == "qwinto") {
             vecteurQwintoPlayer[i]->inputBeforeRoll(*vecteurRollOfDice[i]);
@@ -219,6 +220,8 @@ int main() {
             //dynamic_cast<QwixxScoreSheet*>(s)->   print
             //dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
         }
+        
+        //Les joueurs non actifs jouent
         for (int j = 0; j < inputNumberPlayers; j++) {
             if (inputVersion == "qwinto") {
                 if (vecteurQwintoPlayer[j]->getActif() == false){
@@ -232,17 +235,23 @@ int main() {
                 }
             }
         }
+        
+        //Désactive le joueur actif
         if (inputVersion == "qwinto") {
             vecteurQwintoPlayer[i]->setActif(false);
         } else {
             vecteurQwixxPlayer[i]->setActif(false);
         }
+        
+        //Incrémente le compteur pour tenir compte du prochain joueur actif
         i = (i+1) % inputNumberPlayers;
         //if (number fails == number fails) {flag = false;}
     }
+    
     int sum = 0;
     std::string winner = "";
     
+    //Calculer le score total et déterminer le gagnant
     for (int j = 0; j < inputNumberPlayers; i++) {
         auto &s = vecteurScoreSheet[j];
         if (inputVersion == "qwinto") {
@@ -255,6 +264,8 @@ int main() {
             //cast get total, if total > sum, sum = total, winner = getname
         }
     }
+    
+    //Afficher le gagnant
     std::cout << "Bravo " << winner << " tu as gagné!" << std::endl;
     std::cout << "********** Fin du jeux de dés Qwinto-Qwixx **********" << std::endl;
     

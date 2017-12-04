@@ -124,7 +124,8 @@ int main() {
     std::string inputVersion;
     int inputNumberPlayers;
     std::string inputPlayerName;
-    std::vector<Player*> vecteurPlayer;
+    std::vector<QwintoPlayer*> vecteurQwintoPlayer;
+    std::vector<QwixxPlayer*> vecteurQwixxPlayer;
     std::vector<ScoreSheet*> vecteurScoreSheet;
     
     //Titre de bienvenue
@@ -169,15 +170,16 @@ int main() {
         //New QwintoScoreSheet() then add the name to it to initialise the vecteur de scoresheet
         //vecteurScoreSheet.push_back(new );
     }
-    
+    std::cout << "did i get here1" << std::endl;
     //Créer les joueurs soient qwinto ou qwixx dans un vecteur de pointeurs
     if (inputVersion == "qwinto"){
         for (int i = 0; i < inputNumberPlayers; i++) {
-            vecteurPlayer.push_back(new QwintoPlayer);
+            vecteurQwintoPlayer.push_back(new QwintoPlayer);
+            std::cout << "did i push a player" << std::endl;
         }
     } else if (inputVersion == "qwixx") {
         for (int i = 0; i < inputNumberPlayers; i++) {
-            vecteurPlayer.push_back(new QwixxPlayer());
+            vecteurQwixxPlayer.push_back(new QwixxPlayer());
         }
     } else {
         std::cout << "Erreur" << std::endl;
@@ -194,36 +196,47 @@ int main() {
     //of the players
     bool flag = true;
     int i = 0;
-    
+    std::cout << "did i get here2" << std::endl;
     while (flag) {
-        //for loop number of players? could just control with mod
-        vecteurPlayer[i]->setActif(true);
         flag = false;
-        auto &p = vecteurPlayer[i];
         auto &s = vecteurScoreSheet[i];
+        std::cout << "did i get here3" << std::endl;
         if (inputVersion == "qwinto") {
-            dynamic_cast<QwintoPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
+            vecteurQwintoPlayer[i]->setActif(true);
+            std::cout << "did i get here4" << std::endl;
+        } else {
+            vecteurQwixxPlayer[i]->setActif(true);
+        }
+        std::cout << "did i get here5" << std::endl;
+        if (inputVersion == "qwinto") {
+            vecteurQwintoPlayer[i]->inputBeforeRoll(*vecteurRollOfDice[i]);
             //roll the dice
             //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
-            dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+            //dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
         } else {
-            dynamic_cast<QwixxPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
+            //dynamic_cast<QwixxPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
             //roll the dice
             //dynamic_cast<QwixxScoreSheet*>(s)->   print
-            dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+            //dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
         }
         for (int j = 0; j < inputNumberPlayers; j++) {
-            if (vecteurPlayer[j]->getActif() == false) {
-                if (inputVersion == "qwinto") {
+            if (inputVersion == "qwinto") {
+                if (vecteurQwintoPlayer[j]->getActif() == false){
                     //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
-                    dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
-                } else {
+                    //dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                }
+            } else {
+                if (vecteurQwixxPlayer[j]->getActif() == false){
                     //dynamic_cast<QwixxScoreSheet*>(s)->   print
-                    dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                    //dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
                 }
             }
         }
-        vecteurPlayer[i]->setActif(false);
+        if (inputVersion == "qwinto") {
+            vecteurQwintoPlayer[i]->setActif(false);
+        } else {
+            vecteurQwixxPlayer[i]->setActif(false);
+        }
         i = (i+1) % inputNumberPlayers;
         //if (number fails == number fails) {flag = false;}
     }
@@ -244,13 +257,6 @@ int main() {
     }
     std::cout << "Bravo " << winner << " tu as gagné!" << std::endl;
     std::cout << "********** Fin du jeux de dés Qwinto-Qwixx **********" << std::endl;
-    
-
-    //***** Me testing shit ******
-    RollOfDice* r = new RollOfDice();
-    for (auto &i : vecteurPlayer) {
-        dynamic_cast<QwintoPlayer*>(i)->inputBeforeRoll(*r);
-    }
     
     return 0;
 }

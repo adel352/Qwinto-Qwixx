@@ -19,40 +19,92 @@ QwintoPlayer::QwintoPlayer() {
 }
 
 void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
-    //will implement once I understand how the main works
-    //Enter the colour of dices you would like to roll
-    //I need a if else for active. cause is changes accordingly
     
-    int inputNombreDice;
-    std::string inputCouleur = "";
-    std::string inputProchainCouleur;
+    int inputNombreDé = 0;
+    std::string c1 = "";
+    std::string c2 = "";
+    std::string c3 = "";
     
-    std::cout << "Entrer les couleurs des dés voulues dans une ligne séparé par des espaces.\nVous avez le droit de choisir un, deux trois dés, mais chaque couleur bleu, jaune et rouge doivent être unique." << std::endl;
-    std::cin >> inputCouleur;
-    std::transform(inputCouleur.begin(), inputCouleur.end(), inputCouleur.begin(), ::tolower);
-    //idée check le manuel afin de faire un triple cin
-    
-    /*
-    std::cout << "Entrer le nombre de dés voulant être utilisé. Vous pouvez choisir 1, 2 ou 3 dés." << std::endl;
-    std::cin >> inputNombreDice;
-    //source pour cette section du code https://stackoverflow.com/questions/18728754/checking-input-value-is-an-integer
-    while (inputNombreDice != 1 && inputNombreDice != 2 && inputNombreDice != 3) {
-        std::cout << "Entrée non valide. Entrer le nombre de joueurs avec une valeur numérique 1, 2, ou 3." << std::endl;
+    std::cout << "Entrer le nombre de dé. Vous pouvez entrer 1, 2 ou 3." << std::endl;
+    std::cin >> inputNombreDé;
+    while (inputNombreDé != 1 && inputNombreDé != 2 && inputNombreDé != 3){
+        std::cout << "Erreur. Entrer 1, 2 ou 3." <<std::endl;
         std::cin.clear();
         std::cin.ignore(256,'\n');
-        std::cin >> inputNombreDice;
+        std::cin >> inputNombreDé;
     }
-    std::cout << "Entrer votre chois de couleur unique bleu, jaune ou rouge" << std::endl;
-    for (int i = 0; i < inputNombreDice; i++) {
-        std::cout << "Entrer la couleur " << i+1 << std::endl;
-        std::cin >> inputCouleur;
-        while (inputCouleur != "bleu" && inputCouleur != "jaune" && inputCouleur != "rouge") {
-            std::cout << "Erreur. Entrer la couleur." << std::endl;
+    
+    if (inputNombreDé == 1) {
+        std::cout << "Enter une couleur unique soit Bleu, Rouge ou Jaune." << std::endl;
+        std::cin >> c1;
+        c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+        std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+        while (c1 != "bleu" && c1 != "rouge" && c1 != "jaune") {
+            std::cout << "Erreur. Entrer une couleur soit Bleu, Rouge ou Jaune." << std::endl;
+            std::cin >> c1;
+            c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+            std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+        }
+    } else if (inputNombreDé == 2) {
+        bool flag = true;
+        while (flag) {
+            std::cout << "Enter deux couleurs uniques soit Bleu, Rouge ou Jaune." << std::endl;
+            std::cin >> c1 >> c2;
+            c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+            std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+            c2.erase(remove_if(c2.begin(), c2.end(), isspace), c2.end());
+            std::transform(c2.begin(), c2.end(), c2.begin(), ::tolower);
+            while (c1 != "bleu" && c1 != "rouge" && c1 != "jaune") {
+                std::cout << "Erreur. Entrer pour la couleur 1 soit Bleu, Rouge ou Jaune." << std::endl;
+                std::cin >> c1;
+                c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+                std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+            }
+            while (c2 != "bleu" && c2 != "rouge" && c2 != "jaune") {
+                std::cout << "Erreur. Entrer pour la couleur 2 soit Bleu, Rouge ou Jaune." << std::endl;
+                std::cin >> c2;
+                c2.erase(remove_if(c2.begin(), c2.end(), isspace), c2.end());
+                std::transform(c2.begin(), c2.end(), c2.begin(), ::tolower);
+            }
+            if (c1 != c2) {
+                flag = false;
+            }
+        }
+    } else {
+        bool flag = true;
+        while (flag) {
+            std::cout << "Enter trois couleurs uniques soit Bleu, Rouge ou Jaune." << std::endl;
+            std::cin >> c1 >> c2 >> c3;
+            c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+            std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+            c2.erase(remove_if(c2.begin(), c2.end(), isspace), c2.end());
+            std::transform(c2.begin(), c2.end(), c2.begin(), ::tolower);
+            c3.erase(remove_if(c3.begin(), c3.end(), isspace), c3.end());
+            std::transform(c3.begin(), c3.end(), c3.begin(), ::tolower);
+            while (c1 != "bleu" && c1 != "rouge" && c1 != "jaune") {
+                std::cout << "Erreur. Entrer pour la couleur 1 soit Bleu, Rouge ou Jaune." << std::endl;
+                std::cin >> c1;
+                c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
+                std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+            }
+            while (c2 != "bleu" && c2 != "rouge" && c2 != "jaune") {
+                std::cout << "Erreur. Entrer pour la couleur 2 soit Bleu, Rouge ou Jaune." << std::endl;
+                std::cin >> c2;
+                c2.erase(remove_if(c2.begin(), c2.end(), isspace), c2.end());
+                std::transform(c2.begin(), c2.end(), c2.begin(), ::tolower);
+            }
+            while (c3 != "bleu" && c3 != "rouge" && c3 != "jaune") {
+                std::cout << "Erreur. Entrer pour la couleur 3 soit Bleu, Rouge ou Jaune." << std::endl;
+                std::cin >> c3;
+                c3.erase(remove_if(c3.begin(), c3.end(), isspace), c3.end());
+                std::transform(c3.begin(), c3.end(), c3.begin(), ::tolower);
+            }
+            if (c1 != c2 && c1 != c3 && c2 != c3) {
+                flag = false;
+            }
         }
     }
-     */
-    
-    std::cout << "les couleurs sont " << inputCouleur  << std::endl;
+    //Push the to a roll of dice so c1, c2, c3
 }
 
 void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){

@@ -73,8 +73,18 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour cl, int positionFromLeft){
         }
         
     }
+    
+    //Condition 3: is position out of bounds
+    bool condition3 = false;
+    if((positionFromLeft >=0) && (positionFromLeft <=9))
+        condition3 = true;
+    
+    //Condition 4: does roll of dice contain more than 3 dice
+    bool condition4 = false;
+    if(rd.getNumberOfDice() <=3)
+        condition4 = true;
         
-    return (condition1 && condition2);
+    return (condition1 && condition2 && condition3 && condition4);
 }
 
 
@@ -145,7 +155,8 @@ int QwintoScoreSheet::calcTotal(){
     
     //Substracting failed throws
     int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
-    finalScore = finalScore - failedAttempts * 5;
+    if (failedAttempts > 0)
+        finalScore = finalScore - failedAttempts * 5;
     
     //Setting Final Score in ScoreSheet, still unsusre about this ????
     ScoreSheet::setFinalScore(finalScore);

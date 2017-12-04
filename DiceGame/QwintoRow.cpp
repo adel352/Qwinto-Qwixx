@@ -13,6 +13,9 @@
 #include "RollofDice.h"
 #include "QwintoRow.h"
 
+
+
+
 //Validate function for Red Row
 template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions

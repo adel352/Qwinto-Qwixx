@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4830B2F71FD4AE48002FFA03 /* QwixxScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4830B2F61FD4AE48002FFA03 /* QwixxScoreSheet.cpp */; };
+		4830B2FA1FD4D747002FFA03 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4830B2F91FD4D747002FFA03 /* Player.cpp */; };
+		4830B2FD1FD4D7E6002FFA03 /* QwintoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4830B2FC1FD4D7E6002FFA03 /* QwintoPlayer.cpp */; };
+		484E46601FD605F2001248EC /* QwixxPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 484E465F1FD605F2001248EC /* QwixxPlayer.cpp */; };
 		48E283131FCCB21300D84E49 /* ScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283121FCCB21300D84E49 /* ScoreSheet.cpp */; };
 		48E283161FCCEEA000D84E49 /* QwixxRow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283151FCCEEA000D84E49 /* QwixxRow.cpp */; };
 		48E283191FCE5E7F00D84E49 /* QwintoScoreSheet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48E283181FCE5E7F00D84E49 /* QwintoScoreSheet.cpp */; };
@@ -33,6 +36,12 @@
 /* Begin PBXFileReference section */
 		4830B2F51FD4AE3A002FFA03 /* QwixxScoreSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxScoreSheet.h; sourceTree = "<group>"; };
 		4830B2F61FD4AE48002FFA03 /* QwixxScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwixxScoreSheet.cpp; sourceTree = "<group>"; };
+		4830B2F81FD4D73B002FFA03 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		4830B2F91FD4D747002FFA03 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		4830B2FB1FD4D7D3002FFA03 /* QwintoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwintoPlayer.h; sourceTree = "<group>"; };
+		4830B2FC1FD4D7E6002FFA03 /* QwintoPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwintoPlayer.cpp; sourceTree = "<group>"; };
+		484E465E1FD605E4001248EC /* QwixxPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxPlayer.h; sourceTree = "<group>"; };
+		484E465F1FD605F2001248EC /* QwixxPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QwixxPlayer.cpp; sourceTree = "<group>"; };
 		48E283111FCCB20700D84E49 /* ScoreSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreSheet.h; sourceTree = "<group>"; };
 		48E283121FCCB21300D84E49 /* ScoreSheet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreSheet.cpp; sourceTree = "<group>"; };
 		48E283141FCCEE9100D84E49 /* QwixxRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QwixxRow.h; sourceTree = "<group>"; };
@@ -99,6 +108,12 @@
 				48E283181FCE5E7F00D84E49 /* QwintoScoreSheet.cpp */,
 				4830B2F51FD4AE3A002FFA03 /* QwixxScoreSheet.h */,
 				4830B2F61FD4AE48002FFA03 /* QwixxScoreSheet.cpp */,
+				4830B2F81FD4D73B002FFA03 /* Player.h */,
+				4830B2F91FD4D747002FFA03 /* Player.cpp */,
+				4830B2FB1FD4D7D3002FFA03 /* QwintoPlayer.h */,
+				4830B2FC1FD4D7E6002FFA03 /* QwintoPlayer.cpp */,
+				484E465E1FD605E4001248EC /* QwixxPlayer.h */,
+				484E465F1FD605F2001248EC /* QwixxPlayer.cpp */,
 				48E63CF41FB9349E00E759DB /* main.cpp */,
 			);
 			path = DiceGame;
@@ -161,14 +176,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4830B2FD1FD4D7E6002FFA03 /* QwintoPlayer.cpp in Sources */,
 				48E283161FCCEEA000D84E49 /* QwixxRow.cpp in Sources */,
 				48E283131FCCB21300D84E49 /* ScoreSheet.cpp in Sources */,
 				AC69CEC81FC9D4E500D91C90 /* QwintoRow.cpp in Sources */,
 				48E63CF51FB9349E00E759DB /* main.cpp in Sources */,
+				4830B2FA1FD4D747002FFA03 /* Player.cpp in Sources */,
 				48E283191FCE5E7F00D84E49 /* QwintoScoreSheet.cpp in Sources */,
 				4830B2F71FD4AE48002FFA03 /* QwixxScoreSheet.cpp in Sources */,
 				AC69CED11FC9DA8F00D91C90 /* Dice.cpp in Sources */,
 				AC69CED41FC9DF2400D91C90 /* RollOfDice.cpp in Sources */,
+				484E46601FD605F2001248EC /* QwixxPlayer.cpp in Sources */,
 				AC69CECE1FC9D58400D91C90 /* RandomDice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

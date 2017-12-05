@@ -1,10 +1,9 @@
-//
-//  Player.h
-//  DiceGame
-//
-//  Created by Alexandre Prud'Homme on 2017-11-29.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #ifndef Player_h
 #define Player_h

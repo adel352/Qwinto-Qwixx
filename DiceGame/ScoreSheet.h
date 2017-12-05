@@ -1,10 +1,10 @@
-//
-//  ScoreSheet.h
-//  DiceGame
-//
-//  Created by Adel Araji on 2017-11-27.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
+
 #include <iostream>
 #include "RollOfDice.h"
 #include "Colour.h"

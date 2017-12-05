@@ -37,6 +37,8 @@ public:
     
     //Overloading insertion function
     friend std::ostream &operator<<(std::ostream& os, const Dice &dc);
+    
+    std::string getStringColour();
 };
 
 #endif /* Dice_h */

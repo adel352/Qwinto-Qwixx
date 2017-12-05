@@ -21,6 +21,8 @@
 #include "QwintoPlayer.h"
 #include "QwixxPlayer.h"
 #include "ScoreSheet.h"
+#include "QwintoScoreSheet.h"
+#include "QwixxScoreSheet.h"
 int main() {
     /*
      Dice d(Colour::RED, 0);
@@ -126,7 +128,9 @@ int main() {
     std::string inputPlayerName;
     std::vector<QwintoPlayer*> vecteurQwintoPlayer;
     std::vector<QwixxPlayer*> vecteurQwixxPlayer;
-    std::vector<ScoreSheet*> vecteurScoreSheet;
+    std::vector<QwintoScoreSheet*> vecteurQwintoScoreSheet;
+    std::vector<QwixxScoreSheet*> vecteurQwixxScoreSheet;
+    std::vector<int> vecteurFaillite;
     
     //Titre de bienvenue
     std::cout << "********** Bienvenue au jeux de dés Qwinto-Qwixx **********" << std::endl;
@@ -161,15 +165,20 @@ int main() {
     for (int i = 0; i < inputNumberPlayers; i++) {
         std::cout << "Entrer le nom du joueur " << i+1 << std::endl;
         std::cin >> inputPlayerName;
-        //New QwintoScoreSheet() then add the name to it to initialise the vecteur de scoresheet
-        //vecteurScoreSheet.push_back(new );
+        if (inputVersion == "qwinto") {
+            vecteurQwintoScoreSheet.push_back(new QwintoScoreSheet(inputPlayerName));
+        } else {
+            vecteurQwixxScoreSheet.push_back(new QwixxScoreSheet(inputPlayerName));
+        }
+        vecteurFaillite.push_back(0);
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
     }
-    std::cout << "did i get here1" << std::endl;
+    
     //Créer les joueurs soient qwinto ou qwixx dans un vecteur de pointeurs
     if (inputVersion == "qwinto"){
         for (int i = 0; i < inputNumberPlayers; i++) {
             vecteurQwintoPlayer.push_back(new QwintoPlayer);
-            std::cout << "did i push a player" << std::endl;
         }
     } else if (inputVersion == "qwixx") {
         for (int i = 0; i < inputNumberPlayers; i++) {
@@ -180,29 +189,23 @@ int main() {
         return 0;
     }
     
-    //Créer les roll of dices dans un vectuer de pointeurs
-    std::vector<RollOfDice*> vecteurRollOfDice;
-    for (int i = 0; i < inputNumberPlayers; i++) {
-        vecteurRollOfDice.push_back(new RollOfDice());
-    }
-    
     //Using this for now. Can keep or maybe there is a better way for the while loop. Inc is increment to keep track
     //of the players
     bool flag = true;
     int i = 0;
-    std::cout << "did i get here2" << std::endl;
     
     //While qui roule le jeux
     while (flag) {
         flag = false;
         
-        auto &s = vecteurScoreSheet[i];
-        std::cout << "did i get here3" << std::endl;
+        //auto &s = vecteurScoreSheet[i];
+        
+        //Créer le roll of dice
+        RollOfDice* rollOfDice = new RollOfDice();
         
         //Set un joueur comme actif
         if (inputVersion == "qwinto") {
             vecteurQwintoPlayer[i]->setActif(true);
-            std::cout << "did i get here4" << std::endl;
         } else {
             vecteurQwixxPlayer[i]->setActif(true);
         }
@@ -210,28 +213,90 @@ int main() {
         //Joueur actif joue
         std::cout << "did i get here5" << std::endl;
         if (inputVersion == "qwinto") {
-            vecteurQwintoPlayer[i]->inputBeforeRoll(*vecteurRollOfDice[i]);
-            //roll the dice
-            //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
-            //dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+            vecteurQwintoPlayer[i]->inputBeforeRoll(*rollOfDice);
+            std::cout << "Votre sélection de dés sont: " << std::endl;
+            rollOfDice->roll();
+            std::cout << *rollOfDice << std::endl;
+            std::cout << "Votre score sheet est: " << std::endl;
+            std::cout << *vecteurQwintoScoreSheet[i] << std::endl;
+            vecteurQwintoPlayer[i]->inputAfterRoll(*rollOfDice);
+            if (!vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                vecteurFaillite[i]++;
+            }
+            //
+            //
+            // Insert score in scoresheet
+            //
+            //
         } else {
-            //dynamic_cast<QwixxPlayer*>(p)->inputBeforeRoll(<#RollOfDice &rollOfDice#>);
-            //roll the dice
-            //dynamic_cast<QwixxScoreSheet*>(s)->   print
-            //dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+            vecteurQwixxPlayer[i]->inputBeforeRoll(*rollOfDice);
+            std::cout << "Votre sélection de dés sont: " << std::endl;
+            rollOfDice->roll();
+            std::cout << *rollOfDice << std::endl;
+            std::cout << "Votre score sheet est: " << std::endl;
+            std::cout << *vecteurQwixxScoreSheet[i] << std::endl;
+            vecteurQwixxPlayer[i]->inputAfterRoll(*rollOfDice);
+            if (!vecteurQwixxScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                vecteurFaillite[i]++;
+            }
+            //
+            //
+            // Insert score in scoresheet
+            //
+            //
+            vecteurQwixxPlayer[i]->setActif(false);
+            if (rollOfDice->qwixxSecondRoll == true) {
+                vecteurQwixxPlayer[i]->inputAfterRoll(*rollOfDice);
+                if (!vecteurQwixxScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                    vecteurFaillite[i]++;
+                }
+            }
+            //
+            //
+            // Insert score in scoresheet
+            //
+            //
+            vecteurQwixxPlayer[i]->setActif(true);
         }
         
         //Les joueurs non actifs jouent
         for (int j = 0; j < inputNumberPlayers; j++) {
             if (inputVersion == "qwinto") {
                 if (vecteurQwintoPlayer[j]->getActif() == false){
-                    //dynamic_cast<Qwinto ScoreSheet*>(s)->   print
-                    //dynamic_cast<QwintoPlayer*>(p)->Player::inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                    std::cout << "Votre sélection de dés sont: " << std::endl;
+                    rollOfDice->roll();
+                    std::cout << *rollOfDice << std::endl;
+                    std::cout << "Votre score sheet est: " << std::endl;
+                    std::cout << *vecteurQwintoScoreSheet[j] << std::endl;
+                    vecteurQwintoPlayer[j]->inputAfterRoll(*rollOfDice);
+                    if (!vecteurQwintoScoreSheet[j]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                        vecteurFaillite[j]++;
+                    }
+                    //
+                    //
+                    // Insert score in scoresheet
+                    //
+                    //
                 }
             } else {
                 if (vecteurQwixxPlayer[j]->getActif() == false){
-                    //dynamic_cast<QwixxScoreSheet*>(s)->   print
-                    //dynamic_cast<QwixxPlayer*>(p)->inputAfterRoll(<#RollOfDice &rollOfDice#>);
+                    std::cout << "Votre sélection de dés sont: " << std::endl;
+                    rollOfDice->roll();
+                    std::cout << *rollOfDice << std::endl;
+                    std::cout << "Votre score sheet est: " << std::endl;
+                    std::cout << *vecteurQwixxScoreSheet[i] << std::endl;
+                    vecteurQwixxPlayer[j]->inputAfterRoll(*rollOfDice);
+                    if (rollOfDice->qwixxSecondRoll == true) {
+                        if (!vecteurQwintoScoreSheet[j]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                            vecteurFaillite[j]++;
+                        }
+                    }
+
+                    //
+                    //
+                    // Insert score in scoresheet
+                    //
+                    //
                 }
             }
         }
@@ -245,7 +310,12 @@ int main() {
         
         //Incrémente le compteur pour tenir compte du prochain joueur actif
         i = (i+1) % inputNumberPlayers;
-        //if (number fails == number fails) {flag = false;}
+        
+        for (int k = 0; k < vecteurFaillite.size(); k++){
+            if (vecteurFaillite[k] == 4) {
+                flag = false;
+            }
+        }
     }
     
     int sum = 0;
@@ -253,14 +323,14 @@ int main() {
     
     //Calculer le score total et déterminer le gagnant
     for (int j = 0; j < inputNumberPlayers; i++) {
-        auto &s = vecteurScoreSheet[j];
+        //auto &s = vecteurScoreSheet[j];
         if (inputVersion == "qwinto") {
             //dynamic_cast<QwintoScoreSheet*>(s)->calcTotal();
-            //dynamic_cast<QwintoScoreSheet*>(s)->      print
+            std::cout << vecteurQwintoScoreSheet[i] << std::endl;
             //cast get total, if total > sum, sum = total, winner = getname
         } else {
             //dynamic_cast<QwixxScoreSheet*>(s)->calcTotal();
-            //dynamic_cast<QwixxScoreSheet*>(s)->       print
+            std::cout << vecteurQwixxScoreSheet[i] << std::endl;
             //cast get total, if total > sum, sum = total, winner = getname
         }
     }

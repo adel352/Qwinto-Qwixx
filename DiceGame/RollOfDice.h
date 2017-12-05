@@ -9,11 +9,16 @@
 #ifndef RollofDice_h
 #define RollofDice_h
 #include "Dice.h"
+#include "Colour.h"
 
 struct RollOfDice {
 private:
 //    std::vector<Dice> containerOfDice;
 public:
+    Colour couleur;
+    int position;
+    bool qwixxSecondRoll;
+    
     std::vector<Dice> containerOfDice;
     void roll();
     

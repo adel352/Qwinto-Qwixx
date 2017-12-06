@@ -86,20 +86,20 @@ template<> bool *QwixxRow<std::vector<int>, GREEN>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Check for error
-template<class T, Colour colour> void QwixxRow<T, colour>::checkForErrors(RollOfDice &rd){
-    //If the RollOfDice does not contain 2 dice
-    if (rd.getNumberOfDice() != 2)
-        throw "RollOfDice is not of size 2";
-    
-    //RollOfDice should contain 1 white and one coloured dice
-    if ((rd.getContainer()[0].getColour() != WHITE) && (rd.getContainer()[1].getColour() != WHITE))
-        throw "Both of Dice are coloured, one of them should be white";
-    
-    //Check if sum of the 2 dice is correct or not
-    if ((rd < 0) || (rd > 12))
-        throw "Sum of the faces of the 2 dice is incorrect";
-}
+////Check for error
+//template<class T, Colour colour> void QwixxRow<T, colour>::checkForErrors(RollOfDice &rd){
+//    //If the RollOfDice does not contain 2 dice
+//    if (rd.getNumberOfDice() != 2)
+//        throw "RollOfDice is not of size 2";
+//
+//    //RollOfDice should contain 1 white and one coloured dice
+//    if ((rd.getContainer()[0].getColour() != WHITE) && (rd.getContainer()[1].getColour() != WHITE))
+//        throw "Both of Dice are coloured, one of them should be white";
+//
+//    //Check if sum of the 2 dice is correct or not
+//    if ((rd < 0) || (rd > 12))
+//        throw "Sum of the faces of the 2 dice is incorrect";
+//}
 
 
 template<class T, Colour colour>
@@ -237,7 +237,7 @@ std::ostream& operator<<(std::ostream& os, QwixxRow<std::list<int>, BLUE> &array
 
 template<> QwixxRow<std::vector<int>,RED> QwixxRow<std::vector<int>,RED>::operator+=(RollOfDice &rd){
     
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
     
     return *this;
@@ -247,7 +247,7 @@ template<> QwixxRow<std::vector<int>,RED> QwixxRow<std::vector<int>,RED>::operat
 template<>
 QwixxRow<std::vector<int>,YELLOW> QwixxRow<std::vector<int>,YELLOW>::operator+=(RollOfDice &rd){
     
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
     
     return *this;
@@ -257,7 +257,7 @@ QwixxRow<std::vector<int>,YELLOW> QwixxRow<std::vector<int>,YELLOW>::operator+=(
 template<>
 QwixxRow<std::vector<int>,GREEN> QwixxRow<std::vector<int>,GREEN>::operator+=(RollOfDice &rd){
     
-   checkForErrors(rd);
+//   checkForErrors(rd);
    container.push_back(rd);
     
     return *this;
@@ -267,7 +267,7 @@ QwixxRow<std::vector<int>,GREEN> QwixxRow<std::vector<int>,GREEN>::operator+=(Ro
 template<>
 QwixxRow<std::vector<int>,BLUE> QwixxRow<std::vector<int>,BLUE>::operator+=(RollOfDice &rd){
 
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
 
     return *this;
@@ -277,7 +277,7 @@ QwixxRow<std::vector<int>,BLUE> QwixxRow<std::vector<int>,BLUE>::operator+=(Roll
 template<>
 QwixxRow<std::list<int>,GREEN> QwixxRow<std::list<int>,GREEN>::operator+=(RollOfDice &rd){
 
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
 
     return *this;
@@ -287,7 +287,7 @@ QwixxRow<std::list<int>,GREEN> QwixxRow<std::list<int>,GREEN>::operator+=(RollOf
 template<>
 QwixxRow<std::list<int>,RED> QwixxRow<std::list<int>,RED>::operator+=(RollOfDice &rd){
 
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
 
     return *this;
@@ -297,7 +297,7 @@ QwixxRow<std::list<int>,RED> QwixxRow<std::list<int>,RED>::operator+=(RollOfDice
 template<>
 QwixxRow<std::list<int>,YELLOW> QwixxRow<std::list<int>,YELLOW>::operator+=(RollOfDice &rd){
 
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
 
     return *this;
@@ -307,7 +307,7 @@ QwixxRow<std::list<int>,YELLOW> QwixxRow<std::list<int>,YELLOW>::operator+=(Roll
 template<>
 QwixxRow<std::list<int>,BLUE> QwixxRow<std::list<int>,BLUE>::operator+=(RollOfDice &rd){
 
-    checkForErrors(rd);
+//    checkForErrors(rd);
     container.push_back(rd);
 
     return *this;

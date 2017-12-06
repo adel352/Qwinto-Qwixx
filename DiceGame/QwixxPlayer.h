@@ -21,6 +21,9 @@ public:
     QwixxPlayer();
     QwixxPlayer(std::string name);
     QwixxScoreSheet qwixxScoreSheet;
+    
+    int scoreFromTwoWhiteDice = 0;
+    
     void inputBeforeRoll(RollOfDice& rollOfDice);
     void inputAfterRoll(RollOfDice& rollOfDice);
 };

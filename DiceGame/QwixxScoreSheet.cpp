@@ -17,11 +17,11 @@ void QwixxScoreSheet::insertScoreInRow (int score, Colour cl){
     if(cl == RED)
         redRow += rd;
     else if (cl == YELLOW)
-        yellowRowLocked += rd;
+        yellowRow += rd;
     else if (cl == BLUE)
-        blueRowLocked += rd;
+        blueRow += rd;
     else if (cl == GREEN)
-        greenRowLocked += rd;
+        greenRow += rd;
         
 }
 
@@ -33,17 +33,52 @@ void QwixxScoreSheet::incrementFailedAttempts(){
     Validates if it is possible to add a roll in a certain row
  */
 bool QwixxScoreSheet::validate(RollOfDice rd, Colour cl, int positionFromLeft) {
-    //Condition 1: is position out of bounds
-    bool condition1 = false;
-    if((positionFromLeft >=0) && (positionFromLeft <11))
-        condition1 = true;
+    //Condition : if a position is occupied, adding a value AFTER occupied values not before
+    bool condition = true;
     
-    //Conidtion 2: does roll of dice contain more than 2 dice
-    bool condition2 = false;
-    if(rd.getNumberOfDice() <2)
-        condition2 = true;
+    bool *valuesObtainedInRed = redRow.getValuesObtainedByUser();
+    bool *valuesObtainedInYellow = yellowRow.getValuesObtainedByUser();
+    bool *valuesObtainedInGreen = greenRow.getValuesObtainedByUser();
+    bool *valuesObtainedInBlue = blueRow.getValuesObtainedByUser();
     
-    return (condition1 && condition2);
+    bool conditionArray1 [11] = {false};
+    bool conditionArray2 [11] = {false};
+    bool conditionArray3 [11] = {false};
+    bool conditionArray4 [11] = {false};
+    
+    for(int i = 0; i < 11; i++){
+        conditionArray1[i] = valuesObtainedInRed[i];
+        conditionArray2[i] = valuesObtainedInYellow[i];
+        conditionArray3[i] = valuesObtainedInGreen[i];
+        conditionArray4[i] = valuesObtainedInBlue[i];
+    }
+    
+    //PositionFromLeft: is the number we're adding here
+    //Add validate for occupied cell, go through the vectors and cell and make sure that they are 0
+    if(cl == RED){
+        for(int i = 0; i < 11; i++){
+            if(conditionArray1[i] && (i >= positionFromLeft - 1))
+                condition = false;;//position is occupied
+            
+        }
+    }else if (cl == YELLOW){
+        for(int i = 0; i < 11; i++){
+            if(conditionArray2[i] && (i >=  positionFromLeft - 1))
+                condition = false;;//position is occupied
+        }
+    }else if (cl == GREEN){
+        for(int i = 0; i < 11; i++){
+            if(conditionArray3[i] && (i >= positionFromLeft - 1))
+                condition = false;;//position is occupied
+        }
+    }else if (cl == BLUE){
+        for(int i = 0; i < 11; i++){
+            if(conditionArray4[i] && (i >= positionFromLeft - 1))
+                condition = false;;//position is occupied
+        }
+    }
+    
+    return condition;
 }
 
 

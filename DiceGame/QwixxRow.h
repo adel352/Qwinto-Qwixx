@@ -17,12 +17,13 @@
 
 template <class T, Colour colour>
 class QwixxRow {
-    T container ;//Later on initialize this container to have 0 values
+    
     
 public:
     inline QwixxRow<T,colour> operator+=(RollOfDice &rd);
     friend std::ostream& operator<<(std::ostream& os, QwixxRow &arrayRow);
     
+    T container ;//Later on initialize this container to have 0 values
     std::string getRowString();
     bool *getValuesObtainedByUser();
     void checkForErrors(RollOfDice &rd);

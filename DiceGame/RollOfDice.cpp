@@ -13,13 +13,22 @@
 #include "Dice.h"
 #include "RollOfDice.h"
 
+/*
+ * Implementation méthode roll
+ * @return void
+ */
 void RollOfDice::roll() {
     for (Dice d: containerOfDice){
         d.roll();
     }
 }
 
-// Takes the colours of 2 dice and returns a RollOFDice containing them
+/*
+ * Recoit la couleur de deux dés et retourne un RollOfDice qui les contients
+ * @param Colour d1
+ * @param Colour d2
+ * @return RollOfDice
+ */
 RollOfDice RollOfDice::pair(Colour d1, Colour d2)
 {
     RollOfDice returnValue;
@@ -44,6 +53,7 @@ RollOfDice::operator int() const {
     return sum;
 }
 
+//Overloading insertion operator
 //https://stackoverflow.com/questions/35904143/friend-not-allowed-outside-of-a-class-definition
 std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
 {
@@ -55,12 +65,19 @@ std::ostream &operator<<(std::ostream& os, const RollOfDice &dc)
     return os;
 }
 
+/*
+ * Chercher la grandeur du container
+ * @return int
+ */
 int RollOfDice::getNumberOfDice()
 {
     return containerOfDice.size();
 }
 
-
+/*
+ * Chercher le container
+ * @return std::vectuer<Dice>
+ */
 std::vector<Dice> RollOfDice::getContainer()
 {
     return containerOfDice;

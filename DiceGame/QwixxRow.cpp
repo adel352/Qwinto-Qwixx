@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "QwixxRow.h"
 
-
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::vector<int>, RED>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -18,7 +18,7 @@ template<> bool *QwixxRow<std::vector<int>, RED>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::list<int>, RED>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -28,6 +28,7 @@ template<> bool *QwixxRow<std::list<int>, RED>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::vector<int>, YELLOW>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -37,7 +38,7 @@ template<> bool *QwixxRow<std::vector<int>, YELLOW>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::list<int>, YELLOW>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -47,6 +48,7 @@ template<> bool *QwixxRow<std::list<int>, YELLOW>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::list<int>, BLUE>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -56,7 +58,7 @@ template<> bool *QwixxRow<std::list<int>, BLUE>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::vector<int>, BLUE>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -66,6 +68,7 @@ template<> bool *QwixxRow<std::vector<int>, BLUE>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::list<int>, GREEN>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -75,7 +78,7 @@ template<> bool *QwixxRow<std::list<int>, GREEN>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Overload de l'opérateur
 template<> bool *QwixxRow<std::vector<int>, GREEN>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
     
@@ -85,7 +88,11 @@ template<> bool *QwixxRow<std::vector<int>, GREEN>::getValuesObtainedByUser(){
     return isValueObtainedByUser;
 }
 
-//Check for error
+/*
+ * Vérifie s'il y a des erreurs dans la rangé
+ * @param RollOfDice & rd
+ * @return void
+ */
 template<class T, Colour colour> void QwixxRow<T, colour>::checkForErrors(RollOfDice &rd){
     //If the RollOfDice does not contain 2 dice
     if (rd.getNumberOfDice() != 2)
@@ -100,7 +107,10 @@ template<class T, Colour colour> void QwixxRow<T, colour>::checkForErrors(RollOf
         throw "Sum of the faces of the 2 dice is incorrect";
 }
 
-
+/*
+ * Chercher le string de la rangé du jeux qwixx
+ * @return std::string
+ */
 template<class T, Colour colour>
 std::string QwixxRow<T, colour>::getRowString(){
     

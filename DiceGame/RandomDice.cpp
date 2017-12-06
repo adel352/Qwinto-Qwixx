@@ -11,6 +11,10 @@
 #include <vector>
 #include "RandomDice.h"
 
+/*
+ * Roll() obtient une valeur aléatoire du dé
+ * @return int
+ */
 int RandomDice::roll() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -19,3 +23,4 @@ int RandomDice::roll() {
     //std::cout << "x in random dice" << x << std::endl;
     return x;
 }
+//Générateur suggérer par AE au site https://stackoverflow.com/questions/29580865/how-to-use-a-random-generator-as-a-class-member-in-c11

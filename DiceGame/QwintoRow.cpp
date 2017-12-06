@@ -12,10 +12,12 @@
 #include "RollofDice.h"
 #include "QwintoRow.h"
 
-
-
-
-//Validate function for Red Row
+/*
+ * Validation de la méthode avec une rangé rouge
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     
@@ -46,7 +48,12 @@ template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     return isAddedValueBiggerThanPrevious;
 }
 
-//Validate function for Yellow Row
+/*
+ * Validation de la méthode avec une rangé jaune
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<YELLOW>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     
@@ -77,7 +84,12 @@ template<> bool QwintoRow<YELLOW>::validate(RollOfDice rollOfDice, int position)
     return isAddedValueBiggerThanPrevious;
 }
 
-//Validate function for Blue Row
+/*
+ * Validation de la méthode avec une rangé bleu
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<BLUE>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     

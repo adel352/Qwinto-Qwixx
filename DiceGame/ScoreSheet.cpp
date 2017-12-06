@@ -8,23 +8,39 @@
 #include <stdio.h>
 #include "ScoreSheet.h"
 
-
+/*
+ * Constructeur
+ * @param std::string name
+ */
 ScoreSheet::ScoreSheet(std::string name){
     nameOfPlayer = name;
 }
-
+//Destructeur
 ScoreSheet::~ScoreSheet(){
     
 }
 
+/*
+ * Cherche le nombre de faillites
+ * @return int
+ */
 int ScoreSheet::getNumberOfFailedAttempts(){
     return numberOfFailedAttempts;
 }
 
+/*
+ * Attribuer le pointage final
+ * @param int score
+ * @return void
+ */
 void ScoreSheet::setFinalScore(int score){
     overallScore = score;
 }
 
+/*
+ * Cherche le nom du joueur
+ * @return std::string
+ */
 std::string ScoreSheet::getPlayerName(){
     return nameOfPlayer;
 }

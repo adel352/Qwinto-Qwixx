@@ -8,6 +8,7 @@
 #ifndef Colour_h
 #define Colour_h
 
+//Colour est une énumération qui dicte les couleurs prescrits du jeux.
 enum Colour {RED, YELLOW, GREEN, BLUE, WHITE};
 
 #endif /* Colour_h */

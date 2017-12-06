@@ -15,6 +15,9 @@
 #include "Colour.h"
 #include "RollOfDice.h"
 
+/*
+ * Classe QwintoRow est une rangé de points du jeux Qwinto qui implémente le template Colour
+ */
 template <Colour colour>
 class QwintoRow {
     private:
@@ -22,11 +25,20 @@ class QwintoRow {
     std::array<int,10> arrayRow = {0};
     
     public:
+    //Overload de l'opérateur
     inline int& operator[] (const int position){
         return arrayRow[position];
     }
 
+    /*
+     * Vérifie si l'entré est valide dans la rangé du jeux Qwinto
+     * @param RollOfDice rollOfDice
+     * @param int position
+     * @return bool
+     */
     bool validate (RollOfDice rollOfDice, int position);
+    
+    //Overloading insertion operator
     friend std::ostream& operator<<(std::ostream& os, const QwintoRow<colour> arrayRow);
     
 };

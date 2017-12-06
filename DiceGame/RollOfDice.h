@@ -10,18 +10,31 @@
 #include "Dice.h"
 #include "Colour.h"
 
+/*
+ * Strucute RollOfDice est un container de dés
+ */
 struct RollOfDice {
 private:
 //    std::vector<Dice> containerOfDice;
 public:
+    //Variables publiques
     Colour couleur;
     int position;
     bool qwixxSecondRoll;
-    
     std::vector<Dice> containerOfDice;
+    
+    /*
+     * Implementation méthode roll
+     * @return void
+     */
     void roll();
     
-    // Takes the colours of 2 dice and returns a RollOFDice containing them
+    /*
+     * Recoit la couleur de deux dés et retourne un RollOfDice qui les contients
+     * @param Colour d1
+     * @param Colour d2
+     * @return RollOfDice
+     */
     RollOfDice pair(Colour d1, Colour d2);
     
     //Conversion to int Operator
@@ -30,10 +43,16 @@ public:
     //Overloading insertion operator
     friend std::ostream &operator<<(std::ostream& os, const RollOfDice &dc);
     
-    //Getting the size of the container
+    /*
+     * Chercher la grandeur du container
+     * @return int
+     */
     int getNumberOfDice();
     
-    //Getting the vector back
+    /*
+     * Chercher le container
+     * @return std::vectuer<Dice>
+     */
     std::vector<Dice> getContainer();
 };
 

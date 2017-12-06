@@ -12,8 +12,15 @@
 #include <cstdlib>
 #include <vector>
 
+/*
+ * Structure RandomDice permet de rouler et obtenir une valeur aléatoire
+ */
 struct RandomDice {
 public:
+    /*
+     * Roll() obtient une valeur aléatoire du dé
+     * @return int
+     */
     int roll();
 };
 

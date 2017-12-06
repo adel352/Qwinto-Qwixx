@@ -11,22 +11,40 @@
 #include <vector>
 #include "Dice.h"
 
+/*
+ * Constructeur
+ * @param c Colour
+ * @param f int
+ */
 Dice::Dice(Colour c, int f): col(c), face(f) {};
 
+/*
+ * Implementation méthode roll
+ * @return int
+ */
 int Dice::roll(){
     RandomDice *random = new RandomDice();
     face = random->roll();
     return face;
 }
 
+/*
+ * Cherche la couleur
+ * @return Colour
+ */
 Colour Dice::getColour() {
     return col;
 }
 
+/*
+ * Cherche la valeur (face)
+ * @return int
+ */
 int Dice::getFace(){
     return face;
 }
 
+ //Overloading insertion function
 //https://stackoverflow.com/questions/35904143/friend-not-allowed-outside-of-a-class-definition
 std::ostream &operator<<(std::ostream& os, const Dice &dc)
 {
@@ -54,6 +72,10 @@ std::ostream &operator<<(std::ostream& os, const Dice &dc)
     return os;
 }
 
+/*
+ * Chercher la couleur avec un string
+ * @return std::string
+ */
 std::string Dice::getStringColour() {
     if (col == 0) {
         return "rouge";

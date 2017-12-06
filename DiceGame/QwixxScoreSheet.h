@@ -16,7 +16,13 @@
 #ifndef QwixxScoreSheet_h
 #define QwixxScoreSheet_h
 
+/*
+ * Classe QwixxoScoreSheet crée la feuille de points pour le jeux de dés Qwixx
+ * QwixxoScoreSheet sous classe de ScoreSheet
+ */
 class QwixxScoreSheet: public ScoreSheet{
+    
+    //Variables de vecteur d'instances
     QwixxRow<std::vector<int>, RED> redRow;
     QwixxRow<std::vector<int>, YELLOW> yellowRow;
     QwixxRow<std::list<int>, BLUE> blueRow;
@@ -28,13 +34,29 @@ class QwixxScoreSheet: public ScoreSheet{
     bool greenRowLocked = false;
     bool blueRowLocked = false;
     
+    //Variable d'instance
     std::string playerName = ScoreSheet::getPlayerName();
     int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
 public:
+    //Constructeur
     QwixxScoreSheet(std::string name): ScoreSheet(name) {};
     
+    /*
+     * Voir si l'entré du pointage dans l'emplacement est valide
+     * @param RollOfDice rd
+     * @param Colour c1
+     * @param int positionFromLeft
+     * @return bool
+     */
     virtual bool validate(RollOfDice rd, Colour cl, int positionFromLeft);
+    
+    /*
+     * Calcul le pointage total
+     * @return int
+     */
     virtual int calcTotal();
+    
+    //Overload l'opératuer d'insertion
     friend std::ostream& operator<< (std::ostream& os, QwixxScoreSheet qw);
     
    

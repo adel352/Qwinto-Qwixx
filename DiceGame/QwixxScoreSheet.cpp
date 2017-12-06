@@ -9,6 +9,25 @@
 #include <stdio.h>
 #include "QwixxScoreSheet.h"
 
+void QwixxScoreSheet::insertScoreInRow (int score, Colour cl){
+    RollOfDice rd;
+    Dice d = Dice(cl, score);
+    rd.containerOfDice.push_back(d);
+    
+    if(cl == RED)
+        redRow += rd;
+    else if (cl == YELLOW)
+        yellowRowLocked += rd;
+    else if (cl == BLUE)
+        blueRowLocked += rd;
+    else if (cl == GREEN)
+        greenRowLocked += rd;
+        
+}
+
+void QwixxScoreSheet::incrementFailedAttempts(){
+    ScoreSheet::incrementFailedAttempts();
+}
 
 /**
     Validates if it is possible to add a roll in a certain row
@@ -175,7 +194,14 @@ std::ostream& operator<< (std::ostream& os, QwixxScoreSheet qw){
     else
         os << " U";
     os << "\n---------------------------------------\n";
-    os << "Failed throws: " << qw.failedAttempts;
+    os << "Failed throws: ";
+    if(qw.getNumberOfFailedAttempts() == 0 || qw.getNumberOfFailedAttempts() == 1)
+        os << qw.getNumberOfFailedAttempts();
+    else if (qw.getNumberOfFailedAttempts() > 1){
+        for (int i = 0; i < qw.getNumberOfFailedAttempts(); i++){
+            os << "i+1 ";
+        }
+    }
     
     return os;
 }

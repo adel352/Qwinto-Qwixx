@@ -15,20 +15,20 @@
 #include "RollOfDice.h"
 
 void RollOfDice::roll() {
-    for (Dice d: containerOfDice){
+    
+    for (Dice &d: containerOfDice){
         d.roll();
     }
+    
 }
 
-// Takes the colours of 2 dice and returns a RollOFDice containing them
-RollOfDice RollOfDice::pair(Colour d1, Colour d2)
+// Takes 2 dice and returns a RollOFDice containing them
+RollOfDice RollOfDice::pair(Dice d1, Dice d2)
 {
     RollOfDice returnValue;
     //Search for the appropriate colour
     for (Dice d: containerOfDice){
-        if((d.getColour() == d1) || (d.getColour() == d2))
-            //Add dice if the colour is matched
-            returnValue.containerOfDice.push_back(d);
+        returnValue.containerOfDice.push_back(d);
     }
     
     return returnValue;

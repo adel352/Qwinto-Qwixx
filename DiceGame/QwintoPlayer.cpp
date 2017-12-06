@@ -11,12 +11,19 @@
 #include <string>
 #include <sstream>
 #include "QwintoPlayer.h"
-//#include "QwintoScoreSheet.h"
 #include "RollOfDice.h"
 
+
+QwintoPlayer::QwintoPlayer(std::string name){
+    actif = false;
+    qwintoScoreSheet = QwintoScoreSheet(name);
+}
+
 QwintoPlayer::QwintoPlayer() {
+    
     actif = false;
 }
+
 
 void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
     
@@ -27,7 +34,7 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
         std::string c3 = "";
         
         //Chosir le nombre de dés
-        std::cout << "Entrer le nombre de dé. Vous pouvez entrer 1, 2 ou 3." << std::endl;
+        std::cout << "Entrer le nombre de dés. Vous pouvez entrer 1, 2 ou 3." << std::endl;
         std::cin >> inputNombreDé;
         while (inputNombreDé != 1 && inputNombreDé != 2 && inputNombreDé != 3){
             std::cout << "Erreur. Entrer 1, 2 ou 3." <<std::endl;
@@ -47,6 +54,16 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
                 std::cin >> c1;
                 c1.erase(remove_if(c1.begin(), c1.end(), isspace), c1.end());
                 std::transform(c1.begin(), c1.end(), c1.begin(), ::tolower);
+            }
+            if (c1 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c1 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
             }
         } else if (inputNombreDé == 2) { //choisir couleur 2 dé
             bool flag = true;
@@ -72,6 +89,26 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
                 if (c1 != c2) {
                     flag = false;
                 }
+            }
+            if (c1 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c1 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            }
+            if (c2 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c2 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
             }
         } else { //choisir couleur 3 dés
             bool flag = true;
@@ -106,16 +143,87 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
                     flag = false;
                 }
             }
+            if (c1 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c1 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            }
+            if (c2 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c2 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            }
+            if (c3 == "bleu") {
+                Dice d(Colour::BLUE, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else if (c3 == "rouge"){
+                Dice d(Colour::RED, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            } else {
+                Dice d(Colour::YELLOW, 0);
+                rollOfDice.containerOfDice.push_back(d);
+            }
         }
     }
-    //Push the to a roll of dice so c1, c2, c3
 }
 
 void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
     if (actif) {
-        //method of something to loop all validations, if not validated then count towards non valide
-        //get the dice colours that where rolled
-        //while loop, demander quel couleur de rangé et quel colonne pour insérer. validate on tbe fly
+        std::string inputCouleur;
+        
+        std::cout << "Ton roll est: "<< (int)rollOfDice << " ,entrer la couleur de la rangé dont vous voulez entrer les points." << std::endl;
+        std::cout << "Vous pouvez choisir ";
+        for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
+            std::cout << rollOfDice.containerOfDice[i].getStringColour() << " ";
+        }
+        bool flag = true;
+        std::cout << "." << std::endl;
+        std::cin >> inputCouleur;
+        inputCouleur.erase(remove_if(inputCouleur.begin(), inputCouleur.end(), isspace), inputCouleur.end());
+        std::transform(inputCouleur.begin(), inputCouleur.end(), inputCouleur.begin(), ::tolower);
+        while (flag) {
+            for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
+                if (inputCouleur == rollOfDice.containerOfDice[i].getStringColour()){
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                std::cout << "Erreur, entrer la couleur à nouveau." << std::endl;
+                std::cin >> inputCouleur;
+                inputCouleur.erase(remove_if(inputCouleur.begin(), inputCouleur.end(), isspace), inputCouleur.end());
+                std::transform(inputCouleur.begin(), inputCouleur.end(), inputCouleur.begin(), ::tolower);
+            }
+        }
+        if (inputCouleur == "bleu") {
+            rollOfDice.couleur = Colour::BLUE;
+        } else if ( inputCouleur == "rouge") {
+            rollOfDice.couleur = Colour::RED;
+        } else {
+            rollOfDice.couleur = Colour::YELLOW;
+        }
+        int inputColonne;
+        std::cout << "Entrer la colonne pour le score sheet. Vous pouvez choisir 1, 2, 3, 4, 5, 6, 7, 8, 9 ou 10." << std::endl;
+        std::cin >> inputColonne;
+            
+        
+        while (inputColonne != 1 && inputColonne != 2 && inputColonne != 3 && inputColonne != 4 && inputColonne != 5 && inputColonne != 6 && inputColonne != 7 && inputColonne != 8 && inputColonne != 9 && inputColonne != 10){
+            std::cout << "Erreur. Entrer 1, 2, 3, 4, 5, 6, 7, 8, 9 ou 10." <<std::endl;
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            std::cin >> inputColonne;
+        }
+        rollOfDice.position = inputColonne - 1;
     } else {
         std::string inputChoix;
         std::cout << "Entrer oui si vous voulez utiliser les dés roulés ou non si vous ne voulez pas les utiliser." << std::endl;
@@ -124,9 +232,52 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
         std::transform(inputChoix.begin(), inputChoix.end(), inputChoix.begin(), ::tolower);
         while (inputChoix != "oui" && inputChoix != "non") {
             std::cout << "Erreur, entrer oui ou non." << std::endl;
+            std::cin >> inputChoix;
         }
         if (inputChoix == "oui") {
-            //while demander quel couleur, quel colonne et valider
+            std::string inputCouleur;
+            
+            std::cout << "Ton roll est: "<< (int)rollOfDice << " ,entrer la couleur de la rangé dont vous voulez entrer les points." << std::endl;
+            std::cout << "Vous pouvez choisir ";
+            for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
+                std::cout << rollOfDice.containerOfDice[i].getStringColour() << " ";
+            }
+            bool flag = true;
+            std::cout << "." << std::endl;
+            std::cin >> inputCouleur;
+            inputCouleur.erase(remove_if(inputCouleur.begin(), inputCouleur.end(), isspace), inputCouleur.end());
+            std::transform(inputCouleur.begin(), inputCouleur.end(), inputCouleur.begin(), ::tolower);
+            while (flag) {
+                for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
+                    if (inputCouleur == rollOfDice.containerOfDice[i].getStringColour()){
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    std::cout << "Erreur, entrer la couleur à nouveau." << std::endl;
+                    std::cin >> inputCouleur;
+                    inputCouleur.erase(remove_if(inputCouleur.begin(), inputCouleur.end(), isspace), inputCouleur.end());
+                    std::transform(inputCouleur.begin(), inputCouleur.end(), inputCouleur.begin(), ::tolower);
+                }
+            }
+            if (inputCouleur == "bleu") {
+                rollOfDice.couleur = Colour::BLUE;
+            } else if ( inputCouleur == "rouge") {
+                rollOfDice.couleur = Colour::RED;
+            } else {
+                rollOfDice.couleur = Colour::YELLOW;
+            }
+            int inputColonne;
+            std::cout << "Entrer la colonne pour le score sheet. Vous pouvez choisir 1, 2, 3, 4, 5, 6, 7, 8, 9 ou 10." << std::endl;
+            std::cin >> inputColonne;
+            while (inputColonne != 1 && inputColonne != 2 && inputColonne != 3 && inputColonne != 4 && inputColonne != 5 && inputColonne != 6 && inputColonne != 7 && inputColonne != 8 && inputColonne != 9 && inputColonne != 10){
+                std::cout << "Erreur. Entrer 1, 2, 3, 4, 5, 6, 7, 8, 9 ou 10." <<std::endl;
+                std::cin.clear();
+                std::cin.ignore(256,'\n');
+                std::cin >> inputColonne;
+            }
+            rollOfDice.position = inputColonne - 1;
         }
     }
 }

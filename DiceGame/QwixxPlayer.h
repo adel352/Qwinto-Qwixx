@@ -12,14 +12,15 @@
 #include <string>
 #include <sstream>
 #include "Player.h"
-//#include "QwixxScoreSheet.h"
+#include "QwixxScoreSheet.h"
 #include "RollOfDice.h"
 
 class QwixxPlayer : public Player {
-private:
-    //QwixxScoreSheet qwixxtoScoreSheet;
+
 public:
     QwixxPlayer();
+    QwixxPlayer(std::string name);
+    QwixxScoreSheet qwixxScoreSheet;
     void inputBeforeRoll(RollOfDice& rollOfDice);
     void inputAfterRoll(RollOfDice& rollOfDice);
 };

@@ -33,18 +33,14 @@ template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
             return false;
     }
     
-    bool isAddedValueBiggerThanPrevious = false;
-
     //In case the position is the one after the blocked cell
     for (int i = 0; i < position; i++)
     {
         if ((i != 3) && (arrayRow[i] > rollOfDice))
             return false;
-        else
-            isAddedValueBiggerThanPrevious = true;
     }
-
-    return isAddedValueBiggerThanPrevious;
+    
+    return true;
 }
 
 //Validate function for Yellow Row
@@ -64,18 +60,14 @@ template<> bool QwintoRow<YELLOW>::validate(RollOfDice rollOfDice, int position)
             return false;
     }
     
-    bool isAddedValueBiggerThanPrevious = false;
-    
     //In case the position is the one after the blocked cell
     for (int i = 0; i < position; i++)
     {
         if ((i != 5) && (arrayRow[i] > rollOfDice))
             return false;
-        else
-            isAddedValueBiggerThanPrevious = true;
     }
     
-    return isAddedValueBiggerThanPrevious;
+    return true;
 }
 
 //Validate function for Blue Row
@@ -95,18 +87,14 @@ template<> bool QwintoRow<BLUE>::validate(RollOfDice rollOfDice, int position) {
             return false;
     }
     
-    bool isAddedValueBiggerThanPrevious = false;
-    
     //In case the position is the one after the blocked cell
     for (int i = 0; i < position; i++)
     {
         if ((i != 4) && (arrayRow[i] > rollOfDice))
             return false;
-        else
-            isAddedValueBiggerThanPrevious = true;
     }
     
-    return isAddedValueBiggerThanPrevious;
+    return true;
 }
 
 //Output operator for Red Row
@@ -230,4 +218,6 @@ std::ostream& operator<<(std::ostream& os, const QwintoRow<BLUE> row){
     
     return os;
 }
+
+
 

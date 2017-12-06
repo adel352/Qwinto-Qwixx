@@ -16,27 +16,37 @@
 
 
 class QwintoScoreSheet: public ScoreSheet {
+    
     QwintoRow<RED> redRow;
     QwintoRow<YELLOW> yellowRow;
     QwintoRow<BLUE> blueRow;
     
-    
     int findMax(int a, int b, int c);
-    std::string playerName = ScoreSheet::getPlayerName();
+    
     int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
+    
     
     
 public:
     
-    
-    QwintoScoreSheet(std::string name): ScoreSheet(name) {};
+    QwintoScoreSheet() = default;
+    QwintoScoreSheet(std::string name): ScoreSheet(name) {
+        
+    };
     
     virtual bool validate(RollOfDice rd, Colour cl, int positionFromLeft);
     virtual int calcTotal();
     friend std::ostream& operator<< (std::ostream& os, QwintoScoreSheet qw);
+    void incrementFailedAttempts();
     
+    void insertScoreInRow (int score, Colour cl, int position);
     
+    std::string playerName = ScoreSheet::getPlayerName();
     
+    bool isRedRowLocked();
+    bool isBlueRowLocked();
+    bool isYellowRowLocked();
+
 };
 
 #endif /* QwintoScoreSheet_h */

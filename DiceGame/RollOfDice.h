@@ -14,11 +14,15 @@ struct RollOfDice {
 private:
 //    std::vector<Dice> containerOfDice;
 public:
+    Colour couleur;
+    int position;
+    bool qwixxSecondRoll;
+    
     std::vector<Dice> containerOfDice;
     void roll();
     
-    // Takes the colours of 2 dice and returns a RollOFDice containing them
-    RollOfDice pair(Colour d1, Colour d2);
+    // Takes 2 dice and returns a RollOFDice containing them
+    RollOfDice pair(Dice d1, Dice d2);
     
     //Conversion to int Operator
     operator int() const;

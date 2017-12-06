@@ -54,3 +54,18 @@ std::ostream &operator<<(std::ostream& os, const Dice &dc)
     os << " and face: " <<  dc.face;
     return os;
 }
+
+std::string Dice::getStringColour() {
+    if (col == 0) {
+        return "rouge";
+    } else if (col == 1) {
+        return "jaune";
+    } else if (col == 2) {
+        return "vert";
+    } else if (col == 3) {
+        return "bleu";
+    } else {
+        return "blanc";
+    }
+    return "Erreur";
+}

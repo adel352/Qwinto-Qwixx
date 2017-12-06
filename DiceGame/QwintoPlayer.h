@@ -12,16 +12,21 @@
 #include <string>
 #include <sstream>
 #include "Player.h"
-//#include "QwintoScoreSheet.h"
+#include "QwintoScoreSheet.h"
 #include "RollOfDice.h"
 
 class QwintoPlayer : public Player {
-private:
-    //QwintoScoreSheet qwintoScoreSheet;
+    
 public:
     QwintoPlayer();
+    QwintoPlayer(std::string name);
+    
+    QwintoScoreSheet qwintoScoreSheet;
+    
     void inputBeforeRoll(RollOfDice& rollOfDice);
     void inputAfterRoll(RollOfDice& rollOfDice);
+    
+    void setPlayerNameInScoreSheet(std::string name);
 };
 
 #endif /* QwintoPlayer_h */

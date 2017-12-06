@@ -25,7 +25,9 @@ public:
     
     int getNumberOfFailedAttempts();
     void setFinalScore(int score);
+    int getFinalScore();
     std::string getPlayerName();
+    void incrementFailedAttempts();
     
     bool score(RollOfDice rd,  Colour cl, int positionFromLeft);
     int setTotal();

@@ -9,9 +9,14 @@
 #include <stdio.h>
 #include "ScoreSheet.h"
 
+void ScoreSheet::incrementFailedAttempts(){
+    numberOfFailedAttempts++;
+}
 
 ScoreSheet::ScoreSheet(std::string name){
     nameOfPlayer = name;
+    numberOfFailedAttempts = 0;
+    overallScore = 0;
 }
 
 ScoreSheet::~ScoreSheet(){
@@ -30,6 +35,9 @@ std::string ScoreSheet::getPlayerName(){
     return nameOfPlayer;
 }
 
+int ScoreSheet::getFinalScore(){
+    return overallScore;
+}
 
 
 /**

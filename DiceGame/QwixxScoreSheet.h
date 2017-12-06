@@ -23,22 +23,28 @@ class QwixxScoreSheet: public ScoreSheet{
     QwixxRow<std::list<int>, BLUE> blueRow;
     QwixxRow<std::list<int>, GREEN> greenRow;
     
+    
+    
+    
+    int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
+public:
+    QwixxScoreSheet() = default;
+    QwixxScoreSheet(std::string name): ScoreSheet(name) {};
+    
     //boolean used for printing later
     bool redRowLocked = false;
     bool yellowRowLocked = false;
     bool greenRowLocked = false;
     bool blueRowLocked = false;
     
-    std::string playerName = ScoreSheet::getPlayerName();
-    int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
-public:
-    QwixxScoreSheet(std::string name): ScoreSheet(name) {};
-    
     virtual bool validate(RollOfDice rd, Colour cl, int positionFromLeft);
     virtual int calcTotal();
     friend std::ostream& operator<< (std::ostream& os, QwixxScoreSheet qw);
     
-   
+    void incrementFailedAttempts();
+    std::string playerName = ScoreSheet::getPlayerName();
+    
+    void insertScoreInRow (int score, Colour cl);
 };
 
 #endif /* QwixxScoreSheet_h */

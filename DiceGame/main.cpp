@@ -59,6 +59,7 @@ bool hasGameEndedForQwinto(std::vector<QwintoScoreSheet*> vec, int numOfPlayers)
 }
 
 bool hasGameEndedForQwixx(std::vector<QwixxScoreSheet*> vec, int numOfPlayers){
+    
     bool condition = false;
     for (int i = 0; i < numOfPlayers; i++){
         bool twoRowsLocked = false;
@@ -249,11 +250,22 @@ int main() {
             std::cout << "Votre score sheet est: " << std::endl;
             std::cout << *vecteurQwixxScoreSheet[i] << std::endl;
             vecteurQwixxPlayer[i]->inputAfterRoll(*rollOfDice);
+            
+            //Validate for the 2 white dice throw
+            Dice d1 = Dice(WHITE, vecteurQwixxPlayer[i]->scoreFromTwoWhiteDice);
+            Dice d2 = Dice(WHITE, 0);
+            RollOfDice rdWhiteThrow;
+            rdWhiteThrow.pair(d1, d2);
+            
             if (!vecteurQwixxScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
                 vecteurFaillite[i]++;
                 //Increment failed attempts
                 vecteurQwixxScoreSheet[i]->incrementFailedAttempts();
                 std::cout << "INVALID SCORE, 1 failed attempt" << std::endl;
+                
+                //Check if game ended after entering score
+                if (hasGameEndedForQwixx(vecteurQwixxScoreSheet, inputNumberPlayers))
+                    break;
             }else{
                 //Score is valid and should be inserted in scoresheet
                 if(rollOfDice->couleur == RED)
@@ -264,11 +276,7 @@ int main() {
                     vecteurQwixxScoreSheet[i]->insertScoreInRow(vecteurQwixxPlayer[i]->scoreFromTwoWhiteDice, BLUE);
                 else if (rollOfDice->couleur == GREEN)
                     vecteurQwixxScoreSheet[i]->insertScoreInRow(vecteurQwixxPlayer[i]->scoreFromTwoWhiteDice, GREEN);
-
-                //player set to non-active
-                vecteurQwixxPlayer[i]->setActif(false);
-
-
+                
                 //Check if game ended after entering score
                 if (hasGameEndedForQwixx(vecteurQwixxScoreSheet, inputNumberPlayers))
                     break;
@@ -276,16 +284,57 @@ int main() {
 
             //Second roll for qwixx
             if (rollOfDice->qwixxSecondRoll == true) {
-                vecteurQwixxPlayer[i]->inputAfterRoll(*rollOfDice);
-                if (!vecteurQwixxScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                std::string colourSecondRoll;
+                int whiteDiceNumber;
+                int colouredDiceNumber;
+                
+                std::cout << "Entrer la couleur du dé coloré que vous voulez suivi par sa face: " << std::endl;
+                std::cin >> colourSecondRoll;
+                if (colourSecondRoll == "bleu") {
+                    rollOfDice->couleur = Colour::BLUE;
+                } else if (colourSecondRoll == "rouge") {
+                    rollOfDice->couleur = Colour::RED;
+                } else if (colourSecondRoll == "jaune") {
+                    rollOfDice->couleur = Colour::YELLOW;
+                } else {
+                    rollOfDice->couleur = Colour::GREEN;
+                }
+                std::cin >> colouredDiceNumber;
+                
+                std::cout << "Entrer la face du dé blanc que vous avez choisi: " << std::endl;
+                std::cin >> whiteDiceNumber;
+                
+                Dice d1 = Dice (rollOfDice->couleur, whiteDiceNumber + colouredDiceNumber);
+                RollOfDice newRd;
+                newRd.containerOfDice.push_back(d1);
+                
+                if (!vecteurQwixxScoreSheet[i]->validate(newRd, rollOfDice->couleur, whiteDiceNumber+colouredDiceNumber)) {
                     vecteurFaillite[i]++;
+                    //Increment failed attempts
+                    vecteurQwixxScoreSheet[i]->incrementFailedAttempts();
+                    std::cout << "INVALID SCORE, 1 failed attempt" << std::endl;
+                    
+                    if (hasGameEndedForQwixx(vecteurQwixxScoreSheet, inputNumberPlayers))
+                        break;
+                }else{
+                    //Score is valid and should be inserted in scoresheet
+                    if(rollOfDice->couleur == RED)
+                        vecteurQwixxScoreSheet[i]->insertScoreInRow(whiteDiceNumber+colouredDiceNumber, RED);
+                    else if (rollOfDice->couleur == YELLOW)
+                        vecteurQwixxScoreSheet[i]->insertScoreInRow(whiteDiceNumber+colouredDiceNumber, YELLOW);
+                    else if (rollOfDice->couleur == BLUE)
+                        vecteurQwixxScoreSheet[i]->insertScoreInRow(whiteDiceNumber+colouredDiceNumber, BLUE);
+                    else if (rollOfDice->couleur == GREEN)
+                        vecteurQwixxScoreSheet[i]->insertScoreInRow(whiteDiceNumber+colouredDiceNumber, GREEN);
+                    
+                    
+                    //Check if game ended after entering score
+                    if (hasGameEndedForQwixx(vecteurQwixxScoreSheet, inputNumberPlayers))
+                        break;
                 }
             }
-            //
-            //
-            // Insert score in scoresheet
-            //
-            //
+            
+            rollOfDice->qwixxSecondRoll = false;
             vecteurQwixxPlayer[i]->setActif(false);
         }//END OF QWIXX IMPLEMENTATION
 
@@ -324,21 +373,56 @@ int main() {
                         else if (rollOfDice->couleur == BLUE)
                             vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, BLUE, rollOfDice->position);
 
-
-
-
                         //Check if game ended after entering score
                         if (hasGameEndedForQwinto(vecteurQwintoScoreSheet, inputNumberPlayers))
                             break;
                     }
 
             } else {//QWIXX IMPLEMENTATION start
-
+                vecteurQwixxPlayer[k]->setActif(false);
+                //Print player number and name:
+                std::cout << "                         *********** INACTIVE PLAYER " << k + 1 <<": " << vecteurQwixxScoreSheet[k]->playerName << " **********" << std::endl;
+                
+                vecteurQwixxPlayer[k]->inputBeforeRoll(*rollOfDice);
+                std::cout << "Votre sélection de dés sont: " << std::endl;
+                std::cout << *rollOfDice << std::endl;
+                std::cout << "Votre score sheet est: " << std::endl;
+                std::cout << *vecteurQwixxScoreSheet[k] << std::endl;
+                vecteurQwixxPlayer[k]->inputAfterRoll(*rollOfDice);
+                
+                //Validate for the 2 white dice throw
+                Dice d1 = Dice(WHITE, vecteurQwixxPlayer[k]->scoreFromTwoWhiteDice);
+                Dice d2 = Dice(WHITE, 0);
+                RollOfDice rdWhiteThrow;
+                rdWhiteThrow.pair(d1, d2);
+                
+                if (!vecteurQwixxScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                    vecteurFaillite[k]++;
+                    //Increment failed attempts
+                    vecteurQwixxScoreSheet[k]->incrementFailedAttempts();
+                    std::cout << "INVALID SCORE, 1 failed attempt" << std::endl;
+                }else{
+                    //Score is valid and should be inserted in scoresheet
+                    if(rollOfDice->couleur == RED)
+                        vecteurQwixxScoreSheet[k]->insertScoreInRow(vecteurQwixxPlayer[k]->scoreFromTwoWhiteDice, RED);
+                    else if (rollOfDice->couleur == YELLOW)
+                        vecteurQwixxScoreSheet[k]->insertScoreInRow(vecteurQwixxPlayer[k]->scoreFromTwoWhiteDice, YELLOW);
+                    else if (rollOfDice->couleur == BLUE)
+                        vecteurQwixxScoreSheet[k]->insertScoreInRow(vecteurQwixxPlayer[k]->scoreFromTwoWhiteDice, BLUE);
+                    else if (rollOfDice->couleur == GREEN)
+                        vecteurQwixxScoreSheet[k]->insertScoreInRow(vecteurQwixxPlayer[k]->scoreFromTwoWhiteDice, GREEN);
+                    
+                    
+                    
+                    
+                    //Check if game ended after entering score
+                    if (hasGameEndedForQwixx(vecteurQwixxScoreSheet, inputNumberPlayers))
+                        break;
             }//QWIXX IMPLEMENTATION end
         }
         loopCounter++;
     }
-
+    }
     int mediator = 0;
     int mediatorIndex = 0;
     int max =0;
@@ -390,30 +474,12 @@ int main() {
 
 
     //Afficher le gagnant
-    std::cout << "Bravo " << vecteurQwintoScoreSheet[winnerIndex]->playerName<< ",tu as gagné!" << std::endl;
+    if(inputVersion == "qwinto")
+        std::cout << "Bravo " << vecteurQwintoScoreSheet[winnerIndex]->playerName<< ",tu as gagné!" << std::endl;
+    else
+        std::cout << "Bravo " << vecteurQwixxScoreSheet[winnerIndex]->playerName<< ",tu as gagné!" << std::endl;
     std::cout << "********** Fin du jeux de dés Qwinto-Qwixx **********" << std::endl;
 
     return 0;
 }
-
-//int main(){
-//
-//    QwixxRow<std::vector<int>, RED> redRow;
-//
-//    Dice d1(WHITE, 4);
-//    Dice d2(WHITE, 3);
-//
-//    RollOfDice rd;
-//
-//    rd.containerOfDice.push_back(d1);
-//    rd.containerOfDice.push_back(d2);
-//
-//
-//    redRow += rd;
-//
-//    std::cout << redRow << std::endl;
-//
-//
-//    return 0;
-//}
 

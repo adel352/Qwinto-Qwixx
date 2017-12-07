@@ -1,20 +1,30 @@
-//
-//  QwintoScoreSheet.cpp
-//  DiceGame
-//
-//  Created by Adel Araji on 2017-11-28.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #include <stdio.h>
 #include "QwintoScoreSheet.h"
 
 
 
+/**
+ Incrémente le nombre de faillites
+ */
 void QwintoScoreSheet::incrementFailedAttempts(){
     ScoreSheet::incrementFailedAttempts();
 }
 
+
+/**
+ Insère le score dans le row
+
+ @param score
+ @param cl
+ @param position 
+ */
 void QwintoScoreSheet::insertScoreInRow(int score, Colour cl, int position){
     if(cl == RED)
         redRow[position] = score;

@@ -40,6 +40,8 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice& rollOfDice){
 
 void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
     if (actif) {
+            
+        
         std::string inputCouleur;
         //Roll from the 2 white dices
         scoreFromTwoWhiteDice = 0;
@@ -51,7 +53,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
         }
         
         
-        std::cout << "Entrer la couleur de la rangé dont vous voulez entrer la somme des points blancs: "<< scoreFromTwoWhiteDice << std::endl;
+        std::cout << "Entrer la couleur de la rangé dont vous voulez entrer la somme des dés blancs: "<< scoreFromTwoWhiteDice << std::endl;
         std::cout << "Vous pouvez choisir ";
         for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
             if (rollOfDice.containerOfDice[i].getStringColour() != "blanc"){
@@ -90,6 +92,8 @@ void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
         //score from 2 white dice
         rollOfDice.position = scoreFromTwoWhiteDice;
         
+        
+        
         std::string inputChoix;
         std::cout << "Entrer oui ou non si vous voulez entrer vos points une deuxième fois." << std::endl;
         std::cin >> inputChoix;
@@ -114,8 +118,16 @@ void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
         }
         if (inputChoix == "oui") {
             std::string inputCouleur;
+            //Roll from the 2 white dices
+            scoreFromTwoWhiteDice = 0;
             
-            std::cout << "Entrer la couleur de la rangé dont vous voulez entrer les points." << std::endl;
+            for (int i = 0; i < rollOfDice.getNumberOfDice(); i++){
+                if (rollOfDice.containerOfDice[i].getStringColour() == "blanc"){
+                    scoreFromTwoWhiteDice += rollOfDice.containerOfDice[i].getFace();
+                }
+            }
+            
+            std::cout << "Entrer la couleur de la rangé dont vous voulez entrer la somme des dés blancs: "<< scoreFromTwoWhiteDice << std::endl;
             std::cout << "Vous pouvez choisir ";
             for (int i = 0; i < rollOfDice.getNumberOfDice(); i++) {
                 if (rollOfDice.containerOfDice[i].getStringColour() != "blanc"){
@@ -148,16 +160,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice& rollOfDice){
             } else {
                 rollOfDice.couleur = Colour::YELLOW;
             }
-            int inputColonne;
-            std::cout << "Entrer la colonne pour le score sheet. Vous pouvez choisir 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ou 12." << std::endl;
-            std::cin >> inputColonne;
-            while (inputColonne != 2 && inputColonne != 3 && inputColonne != 4 && inputColonne != 5 && inputColonne != 6 && inputColonne != 7 && inputColonne != 8 && inputColonne != 9 && inputColonne != 10 && inputColonne != 11 && inputColonne != 12){
-                std::cout << "Erreur. Entrer 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ou 12." <<std::endl;
-                std::cin.clear();
-                std::cin.ignore(256,'\n');
-                std::cin >> inputColonne;
-            }
-            rollOfDice.position = inputColonne;
+            rollOfDice.position = scoreFromTwoWhiteDice;
         } else {
             rollOfDice.qwixxSecondRoll = false;
             std::cout << std::endl;

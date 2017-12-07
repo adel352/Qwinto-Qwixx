@@ -1,10 +1,9 @@
-//
-//  QwintoRow.cpp
-//  DiceGame
-//
-//  Created by Alexandre Prud'Homme on 2017-11-25.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #include <random>
 #include <iostream>
@@ -14,9 +13,12 @@
 #include "QwintoRow.h"
 
 
-
-
-//Validate function for Red Row
+/*
+ * Validation de la méthode avec une rangé rouge
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     
@@ -43,7 +45,12 @@ template<> bool QwintoRow<RED>::validate(RollOfDice rollOfDice, int position) {
     return true;
 }
 
-//Validate function for Yellow Row
+/*
+ * Validation de la méthode avec une rangé jaune
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<YELLOW>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     
@@ -70,7 +77,12 @@ template<> bool QwintoRow<YELLOW>::validate(RollOfDice rollOfDice, int position)
     return true;
 }
 
-//Validate function for Blue Row
+/*
+ * Validation de la méthode avec une rangé bleu
+ * @param RollOfDice rollOfDice
+ * @param int position
+ * @return bool
+ */
 template<> bool QwintoRow<BLUE>::validate(RollOfDice rollOfDice, int position) {
     //The following are 3 eliminating conditions
     
@@ -218,6 +230,3 @@ std::ostream& operator<<(std::ostream& os, const QwintoRow<BLUE> row){
     
     return os;
 }
-
-
-

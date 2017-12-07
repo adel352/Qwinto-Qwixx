@@ -1,18 +1,17 @@
-//
-//  ScoreSheet.cpp
-//  DiceGame
-//
-//  Created by Adel Araji on 2017-11-27.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #include <stdio.h>
 #include "ScoreSheet.h"
 
-void ScoreSheet::incrementFailedAttempts(){
-    numberOfFailedAttempts++;
-}
-
+/*
+ * Constructeur
+ * @param std::string name
+ */
 ScoreSheet::ScoreSheet(std::string name){
     nameOfPlayer = name;
     numberOfFailedAttempts = 0;
@@ -23,18 +22,42 @@ ScoreSheet::~ScoreSheet(){
     
 }
 
+/*
+ * Incrémente le nombre de faillites
+ */
+void ScoreSheet::incrementFailedAttempts(){
+    numberOfFailedAttempts++;
+}
+
+/*
+ * Cherche le nombre de faillites
+ * @return int
+ */
 int ScoreSheet::getNumberOfFailedAttempts(){
     return numberOfFailedAttempts;
 }
 
+/*
+ * Attribuer le pointage final
+ * @param int score
+ * @return void
+ */
 void ScoreSheet::setFinalScore(int score){
     overallScore = score;
 }
 
+/*
+ * Cherche le nom du joueur
+ * @return std::string
+ */
 std::string ScoreSheet::getPlayerName(){
     return nameOfPlayer;
 }
 
+/*
+ * Cherche le score final
+ * @return int
+ */
 int ScoreSheet::getFinalScore(){
     return overallScore;
 }

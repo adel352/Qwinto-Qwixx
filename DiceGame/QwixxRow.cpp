@@ -1,107 +1,82 @@
-//
-//  QwixxRow.cpp
-//  DiceGame
-//
-//  Created by Adel Araji on 2017-11-27.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #include <stdio.h>
 #include "QwixxRow.h"
 
-
+//Getting values for red row vector
 template<> bool *QwixxRow<std::vector<int>, RED>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
-    for (std::vector<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
+    for (std::vector<int>::const_iterator i =  container.begin(); i != container.end(); ++i){
         isValueObtainedByUser[*i-2] = true;
-    
+    }
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Getting values for red row list
 template<> bool *QwixxRow<std::list<int>, RED>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::list<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[*i-2] = true;
-    
     return isValueObtainedByUser;
 }
 
+//Getting values for yellow row vector
 template<> bool *QwixxRow<std::vector<int>, YELLOW>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::vector<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[*i-2] = true;
-    
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Getting values for yellow row list
 template<> bool *QwixxRow<std::list<int>, YELLOW>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::list<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[*i-2] = true;
-    
     return isValueObtainedByUser;
 }
 
+//Getting values for blue row list
 template<> bool *QwixxRow<std::list<int>, BLUE>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::list<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[12 - *i] = true;
-    
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Getting values for blue row vector
 template<> bool *QwixxRow<std::vector<int>, BLUE>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::vector<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[12 - *i] = true;
-    
     return isValueObtainedByUser;
 }
 
+//Getting values for green row list
 template<> bool *QwixxRow<std::list<int>, GREEN>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::list<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[12 - *i] = true;
-    
     return isValueObtainedByUser;
 }
 
-//Not sure about this
+//Getting values for green row vector
 template<> bool *QwixxRow<std::vector<int>, GREEN>::getValuesObtainedByUser(){
     bool isValueObtainedByUser[11] = {false};
-    
     for (std::vector<int>::const_iterator i =  container.begin(); i != container.end(); ++i)
         isValueObtainedByUser[12 - *i] = true;
-    
     return isValueObtainedByUser;
 }
 
-////Check for error
-//template<class T, Colour colour> void QwixxRow<T, colour>::checkForErrors(RollOfDice &rd){
-//    //If the RollOfDice does not contain 2 dice
-//    if (rd.getNumberOfDice() != 2)
-//        throw "RollOfDice is not of size 2";
-//
-//    //RollOfDice should contain 1 white and one coloured dice
-//    if ((rd.getContainer()[0].getColour() != WHITE) && (rd.getContainer()[1].getColour() != WHITE))
-//        throw "Both of Dice are coloured, one of them should be white";
-//
-//    //Check if sum of the 2 dice is correct or not
-//    if ((rd < 0) || (rd > 12))
-//        throw "Sum of the faces of the 2 dice is incorrect";
-//}
-
-
+/*
+ * Chercher le string de la rangé du jeux qwixx
+ * @return std::string
+ */
 template<class T, Colour colour>
 std::string QwixxRow<T, colour>::getRowString(){
     
@@ -110,7 +85,6 @@ std::string QwixxRow<T, colour>::getRowString(){
     bool containerIsVector = false;
     if(typeid(container) == typeid(std::vector<int>))
         containerIsVector = true;
-    
     
     if (colour == RED)
         returnValue = "Red    ";
@@ -123,8 +97,6 @@ std::string QwixxRow<T, colour>::getRowString(){
     
     bool *isValueObtainedByUser;
     
-    
-    
     if ((colour == RED) || (colour == YELLOW)){
         //Check what values are obtained by the player with the roll of dice
         isValueObtainedByUser = getValuesObtainedByUser();
@@ -136,7 +108,6 @@ std::string QwixxRow<T, colour>::getRowString(){
             condition[i] = isValueObtainedByUser[i];
         }
   
-        
         for (int i = 0; i < 11; i++){
             returnValue.append("|");
             
@@ -178,9 +149,7 @@ std::string QwixxRow<T, colour>::getRowString(){
     
     returnValue.append("|");
     
-    
     return returnValue;
-    
 }
 
 //Container: Vector; Colour RED
@@ -231,86 +200,57 @@ std::ostream& operator<<(std::ostream& os, QwixxRow<std::list<int>, BLUE> &array
     return os;
 }
 
-//+= operators
-
 //Vector, RED
-
 template<> QwixxRow<std::vector<int>,RED> QwixxRow<std::vector<int>,RED>::operator+=(RollOfDice &rd){
-    
-//    checkForErrors(rd);
     container.push_back(rd);
-    
     return *this;
 }
 
 //Vector, YELLOW
 template<>
 QwixxRow<std::vector<int>,YELLOW> QwixxRow<std::vector<int>,YELLOW>::operator+=(RollOfDice &rd){
-    
-//    checkForErrors(rd);
     container.push_back(rd);
-    
     return *this;
 }
 
 //Vector, GREEN
 template<>
 QwixxRow<std::vector<int>,GREEN> QwixxRow<std::vector<int>,GREEN>::operator+=(RollOfDice &rd){
-    
-//   checkForErrors(rd);
    container.push_back(rd);
-    
     return *this;
 }
 
 //Vector, BLUE
 template<>
 QwixxRow<std::vector<int>,BLUE> QwixxRow<std::vector<int>,BLUE>::operator+=(RollOfDice &rd){
-
-//    checkForErrors(rd);
     container.push_back(rd);
-
     return *this;
 }
 
 //List, GREEN
 template<>
 QwixxRow<std::list<int>,GREEN> QwixxRow<std::list<int>,GREEN>::operator+=(RollOfDice &rd){
-
-//    checkForErrors(rd);
     container.push_back(rd);
-
     return *this;
 }
 
 //List, RED
 template<>
 QwixxRow<std::list<int>,RED> QwixxRow<std::list<int>,RED>::operator+=(RollOfDice &rd){
-
-//    checkForErrors(rd);
     container.push_back(rd);
-
     return *this;
 }
 
 //List, YELLOW
 template<>
 QwixxRow<std::list<int>,YELLOW> QwixxRow<std::list<int>,YELLOW>::operator+=(RollOfDice &rd){
-
-//    checkForErrors(rd);
     container.push_back(rd);
-
     return *this;
 }
 
 //List, BLUE
 template<>
 QwixxRow<std::list<int>,BLUE> QwixxRow<std::list<int>,BLUE>::operator+=(RollOfDice &rd){
-
-//    checkForErrors(rd);
     container.push_back(rd);
-
     return *this;
 }
-
-

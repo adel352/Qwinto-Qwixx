@@ -1,11 +1,9 @@
-//
-//  QwixxScoreSheet.h
-//  DiceGame
-//
-//  Created by Adel Araji on 2017-12-02.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
-
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #include "ScoreSheet.h"
 #include "QwixxRow.h"
@@ -23,15 +21,13 @@ class QwixxScoreSheet: public ScoreSheet{
     QwixxRow<std::list<int>, BLUE> blueRow;
     QwixxRow<std::list<int>, GREEN> greenRow;
     
-    
-    
-    
-    int failedAttempts = ScoreSheet::getNumberOfFailedAttempts();
 public:
     QwixxScoreSheet() = default;
     QwixxScoreSheet(std::string name): ScoreSheet(name) {};
     
-    //boolean used for printing later
+    std::string playerName = ScoreSheet::getPlayerName();
+    std::vector<int> getVectorElementsInRow(Colour cl);
+    std::list<int> getListElementsInRow(Colour cl);
     bool redRowLocked = false;
     bool yellowRowLocked = false;
     bool greenRowLocked = false;
@@ -40,11 +36,8 @@ public:
     virtual bool validate(RollOfDice rd, Colour cl, int positionFromLeft);
     virtual int calcTotal();
     friend std::ostream& operator<< (std::ostream& os, QwixxScoreSheet qw);
-    
     void incrementFailedAttempts();
-    std::string playerName = ScoreSheet::getPlayerName();
-    
-    void insertScoreInRow (int score, Colour cl);
+    void insertScoreInRow (int score, Colour cl);  
 };
 
 #endif /* QwixxScoreSheet_h */

@@ -1,10 +1,9 @@
-//
-//  Dice.h
-//  DiceGame
-//
-//  Created by Alexandre Prud'Homme on 2017-11-25.
-//  Copyright © 2017 Adel Araji. All rights reserved.
-//
+/*
+ * CSI 2772 - Jouer aux dés
+ * Adel Araji - 7897476
+ * Alexandre Prud'Homme - 7293804
+ * Le 6 décembre 2017
+ */
 
 #ifndef Dice_h
 #define Dice_h
@@ -38,6 +37,12 @@ public:
     //Overloading insertion function
     friend std::ostream &operator<<(std::ostream& os, const Dice &dc);
     
+    
+    /**
+     Chercher la couleur avec un string
+
+     @return String: Colour
+     */
     std::string getStringColour();
 };
 

@@ -223,6 +223,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
             std::cin >> inputColonne;
         }
         rollOfDice.position = inputColonne - 1;
+        rollOfDice.choix = true;
     } else {
         std::string inputChoix;
         std::cout << "Entrer oui si vous voulez utiliser les dés roulés ou non si vous ne voulez pas les utiliser." << std::endl;
@@ -232,6 +233,8 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
         while (inputChoix != "oui" && inputChoix != "non") {
             std::cout << "Erreur, entrer oui ou non." << std::endl;
             std::cin >> inputChoix;
+            inputChoix.erase(remove_if(inputChoix.begin(), inputChoix.end(), isspace), inputChoix.end());
+            std::transform(inputChoix.begin(), inputChoix.end(), inputChoix.begin(), ::tolower);
         }
         if (inputChoix == "oui") {
             std::string inputCouleur;
@@ -277,6 +280,9 @@ void QwintoPlayer::inputAfterRoll(RollOfDice& rollOfDice){
                 std::cin >> inputColonne;
             }
             rollOfDice.position = inputColonne - 1;
+            rollOfDice.choix = true;
+        } else {
+            rollOfDice.choix = false;
         }
     }
 }

@@ -19,6 +19,7 @@ public:
     int position;
     bool qwixxSecondRoll;
     std::vector<Dice> containerOfDice;
+    bool choix;
     
     /*
      * Implementation méthode roll

@@ -216,27 +216,53 @@ int main() {
             std::cout << "Votre score sheet est: " << std::endl;
             std::cout << *vecteurQwintoScoreSheet[i] << std::endl;
             vecteurQwintoPlayer[i]->inputAfterRoll(*rollOfDice);
-            if (!vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
-                vecteurFaillite[i]++;
-                //Increment failed attempts
-                vecteurQwintoScoreSheet[i]->incrementFailedAttempts();
-                std::cout << "INVALID SCORE, 1 failed attempt" << std::endl;
-            }else{
-                //Score is valid and should be inserted in scoresheet
-                if(rollOfDice->couleur == RED)
-                    vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, RED, rollOfDice->position);
-                else if (rollOfDice->couleur == YELLOW)
-                    vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, YELLOW, rollOfDice->position);
-                else if (rollOfDice->couleur == BLUE)
-                    vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, BLUE, rollOfDice->position);
-
-                //player set to non-active
-                vecteurQwintoPlayer[i]->setActif(false);
-
-                //Check if game ended after entering score
-                if (hasGameEndedForQwinto(vecteurQwintoScoreSheet, inputNumberPlayers))
-                    break;
-            }//QWINTO IMPLEMETATION end
+            
+            bool flag1 = true;
+            if (rollOfDice->choix){
+                while (flag1) {
+                    if (rollOfDice->choix) {
+                        if (!vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                            if (!vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 1) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 2) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 3) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 4) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 5) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 6) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 7) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 8) &&
+                                !vecteurQwintoScoreSheet[i]->validate(*rollOfDice, rollOfDice->couleur, 9) ) {
+                                vecteurFaillite[i]++;
+                                //Increment failed attempts
+                                vecteurQwintoScoreSheet[i]->incrementFailedAttempts();
+                                std::cout << "INVALID SCORE AT SELECTED POSITION AND INVALID SCORE FOR WHOLE ROW, +1 failed attempt" << std::endl;
+                                flag1 = false;
+                            } else {
+                                std::cout << "INVALID SCORE AT POSITION. Other valid position are available in the row please try again or please read the rules of the game." << std::endl;
+                                vecteurQwintoPlayer[i]->inputAfterRoll(*rollOfDice);
+                            }
+                        } else {
+                            //Score is valid and should be inserted in scoresheet
+                            if(rollOfDice->couleur == RED)
+                                vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, RED, rollOfDice->position);
+                            else if (rollOfDice->couleur == YELLOW)
+                                vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, YELLOW, rollOfDice->position);
+                            else if (rollOfDice->couleur == BLUE)
+                                vecteurQwintoScoreSheet[i]->insertScoreInRow(*rollOfDice, BLUE, rollOfDice->position);
+                            
+                            
+                            
+                            //player set to non-active
+                            vecteurQwintoPlayer[i]->setActif(false);
+                            
+                            
+                            //Check if game ended after entering score
+                            if (hasGameEndedForQwinto(vecteurQwintoScoreSheet, inputNumberPlayers))
+                                break;
+                            flag1 = false;
+                        }//QWINTO IMPLEMETATION end
+                    }
+                }
+            }
 
         } else {//QWIXX IMPLEMENTATION, active player
             vecteurQwixxPlayer[i]->setActif(true);
@@ -357,26 +383,51 @@ int main() {
                     std::cout << "Votre score sheet est: " << std::endl;
                     std::cout << *vecteurQwintoScoreSheet[k] << std::endl;
                     vecteurQwintoPlayer[k]->inputAfterRoll(*rollOfDice);
-                    if (!vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
-                        //SHOULD REMOVE failed attempts here
-                        vecteurFaillite[k]++;
-
-                        //Increment failed attempts
-                        vecteurQwintoScoreSheet[k]->incrementFailedAttempts();
-                        std::cout << "INVALID SCORE, 1 failed attempt" << std::endl;
-                    }else{
-                        //Score is valid and should be inserted in scoresheet
-                        if(rollOfDice->couleur == RED)
-                            vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, RED, rollOfDice->position);
-                        else if (rollOfDice->couleur == YELLOW)
-                            vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, YELLOW, rollOfDice->position);
-                        else if (rollOfDice->couleur == BLUE)
-                            vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, BLUE, rollOfDice->position);
-
-                        //Check if game ended after entering score
-                        if (hasGameEndedForQwinto(vecteurQwintoScoreSheet, inputNumberPlayers))
-                            break;
+                
+                bool flag2 = true;
+                
+                if (rollOfDice->choix){
+                    while (flag2){
+                        if (rollOfDice->choix) {
+                            if (!vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, rollOfDice->position)) {
+                                if (!vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 0) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 1) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 2) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 3) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 4) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 5) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 6) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 7) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 8) &&
+                                    !vecteurQwintoScoreSheet[k]->validate(*rollOfDice, rollOfDice->couleur, 9) ) {
+                                    //SHOULD REMOVE failed attempts here
+                                    vecteurFaillite[k]++;
+                                    
+                                    //Increment failed attempts
+                                    vecteurQwintoScoreSheet[k]->incrementFailedAttempts();
+                                    std::cout << "INVALID SCORE AT SELECTED POSITION AND INVALID SCORE FOR WHOLE ROW, +1 failed attempt" << std::endl;
+                                    flag2 = false;
+                                } else {
+                                    std::cout << "INVALID SCORE AT POSITION. Other valid positions are available in the row, please try again or please read the rules of the game" << std::endl;
+                                    vecteurQwintoPlayer[k]->inputAfterRoll(*rollOfDice);
+                                }
+                            }else{
+                                //Score is valid and should be inserted in scoresheet
+                                if(rollOfDice->couleur == RED)
+                                    vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, RED, rollOfDice->position);
+                                else if (rollOfDice->couleur == YELLOW)
+                                    vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, YELLOW, rollOfDice->position);
+                                else if (rollOfDice->couleur == BLUE)
+                                    vecteurQwintoScoreSheet[k]->insertScoreInRow(*rollOfDice, BLUE, rollOfDice->position);
+                                
+                                //Check if game ended after entering score
+                                if (hasGameEndedForQwinto(vecteurQwintoScoreSheet, inputNumberPlayers))
+                                    break;
+                                flag2 = false;
+                            }
+                        }
                     }
+                }
 
             } else {//QWIXX IMPLEMENTATION start
                 vecteurQwixxPlayer[k]->setActif(false);
